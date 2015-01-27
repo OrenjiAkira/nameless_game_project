@@ -1,11 +1,9 @@
 -- main.lua --
 
-require "ui_image_chara"
+require 'ui_image_chara'
 
 local dtotal = 0
-local fps = 60
-
-tick = 0
+local fps = 1/60
 
 function love.load()
 	-- load things
@@ -14,16 +12,15 @@ function love.load()
 	if (quadgrid) then
 		print('woops')
 	end
-	player = ui_image_chara( {}, 'squall', 1, 1 );
+	player = ui_image_chara( {}, 'avatar', 4, 4 );
 end
 
 function love.update( dt )
-	local framerate = 1/fps
 	dtotal = dtotal + dt
-	while dtotal >= ( framerate ) do
-		dtotal = dtotal - framerate
+	while dtotal >= fps do
+		dtotal = dtotal - fps
 		-- do things here
-		
+		player:update()
 	end
 end
 
