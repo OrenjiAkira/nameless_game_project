@@ -1,16 +1,16 @@
 -- main.lua --
 
-
+require "ui"
 
 
 dtotal = 0
 fps = 60
-
+tick = 0
 
 
 function love.load()
 	-- load things
-	window = love.graphics.newCanvas(1024,768)
+	window = love.graphics.newCanvas(1280,720)
 	love.graphics.setBackgroundColor(64,64,64)
 end
 
