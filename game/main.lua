@@ -1,17 +1,20 @@
 -- main.lua --
 
-require "ui"
+require "ui_image_chara"
 
+local dtotal = 0
+local fps = 60
 
-dtotal = 0
-fps = 60
 tick = 0
-
 
 function love.load()
 	-- load things
 	window = love.graphics.newCanvas(1280,720)
 	love.graphics.setBackgroundColor(64,64,64)
+	if (quadgrid) then
+		print('woops')
+	end
+	player = ui_image_chara( {}, 'squall', 1, 1 );
 end
 
 function love.update( dt )
@@ -26,7 +29,7 @@ end
 
 function love.draw()
 	-- render things
-
+	player:draw()
 end
 
 function love.keypressed( key )
