@@ -1,0 +1,436 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"prev",
+				"prev_slide"
+			],
+			[
+				"te",
+				"text-decoration"
+			],
+			[
+				"togg",
+				"toggleClass"
+			],
+			[
+				"chil",
+				"children"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"p",
+				"padding"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"bot",
+				"bottom"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"menu",
+				"menu-item-has-children"
+			],
+			[
+				"tran",
+				"transition"
+			],
+			[
+				"on",
+				"onclick	Attr"
+			],
+			[
+				"fa-",
+				"fa-caret-down"
+			],
+			[
+				"str",
+				"strrpos"
+			],
+			[
+				"temp",
+				"temp_weekend"
+			],
+			[
+				"temp_wee",
+				"temp_weekend"
+			],
+			[
+				"ho",
+				"horarios"
+			],
+			[
+				"hor",
+				"hor_length"
+			],
+			[
+				"for",
+				"for	for …"
+			],
+			[
+				"strr",
+				"strrpos"
+			],
+			[
+				"is_s",
+				"is_string"
+			],
+			[
+				"em",
+				"empty"
+			],
+			[
+				"meta_",
+				"meta_locais_length"
+			],
+			[
+				"meta",
+				"meta_locais"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"cla",
+				"classificacao"
+			],
+			[
+				"field",
+				"fieldset"
+			],
+			[
+				"eventos",
+				"eventos_locais_meta_box"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"update",
+				"update_numberofDates"
+			],
+			[
+				"add_be",
+				"add_day_before_this"
+			],
+			[
+				"j",
+				"jQuery"
+			],
+			[
+				"of",
+				"ofIndex"
+			],
+			[
+				"is_a",
+				"is_array"
+			],
+			[
+				"to",
+				"to_array"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"is",
+				"is_array"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/style.css",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/_assets/js/mechanics_script.js",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/header.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/__footer.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/index.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/_footer.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/jumbotron-slider.php",
+		"/C/xampp/htdocs/prceu/wp-content/plugins/PRCEU/include/noticias_info_metabox.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/single-noticia.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/jumbotron-slider",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/page-menu.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/single-centro.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/single-evento.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/single-programa.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/page.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/single.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/page-cursos.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/page-centros.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/searchform.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/_assets/js/header-menu.js",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/functions.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/footer.php",
+		"/C/Users/8010041/Documents/Sublime Text 3/Data/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/8010041/Documents/Sublime Text 3/Data/Packages/User/Preferences.sublime-settings",
+		"/C/Users/8010041/Documents/Sublime Text 3/Data/Packages/User/JSON.sublime-settings",
+		"/C/Users/8010041/Documents/Sublime Text 3/Data/Packages/User/Distraction Free.sublime-settings",
+		"/C/Users/8010041/Downloads/prceu_local.sublime-project",
+		"/C/Users/8010041/Downloads/prceu_local.sublime-workspace",
+		"/C/xampp/htdocs/prceu/wp-content/plugins/PRCEU/include/noticias_locais_metabox.php",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/_assets/js/height_fix.js",
+		"/C/xampp/htdocs/prceu/wp-content/plugins/PRCEU/include/noticias.php",
+		"/C/xampp/htdocs/prceu/wp-content/plugins/PRCEU/include/noticias_locais_classes.php",
+		"/C/xampp/htdocs/prceu/wp-content/plugins/PRCEU/js/noticias_form_script.js",
+		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/single-noticia1.php",
+		"/C/Users/8010041/Documents/new prceu website/masthead treatment/inspector-stylesheet.css",
+		"/C/xampp/htdocs/prceu/wp-includes/plugin.php",
+		"/C/xampp/htdocs/_caminhosdacultura/wp-content/plugins/caminhos/include/button_script.php",
+		"/C/xampp/htdocs/_caminhosdacultura/wp-content/plugins/caminhos/include/class_local.php"
+	],
+	"find":
+	{
+		"height": 21.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"border: none",
+			"border",
+			"\"pr",
+			"[",
+			".programa",
+			"discover li",
+			"Museo Slab 500",
+			"\"Droid Sans 400\"",
+			"helvetica",
+			"\"Open Sans Condensed\"",
+			"\"museo slab 500\"",
+			"\"Open Sans\"",
+			"meta",
+			"treating jumb",
+			"textbox",
+			"input {",
+			".search",
+			"menu-toggle",
+			"btn",
+			"#menu-header-menu",
+			"#menu",
+			"menu-to",
+			"home",
+			"input {",
+			"menu_toggle",
+			"menutoggle",
+			"menu-toggle",
+			"hentry.direitos",
+			"direitos",
+			".menu",
+			"orgaos",
+			"centros",
+			"['value']",
+			"$label",
+			"label",
+			"value",
+			"[value]",
+			"$field['value']",
+			"field['label",
+			"$label",
+			"inicio",
+			"highlights",
+			"destaques",
+			"call_user_func_array",
+			".textbox",
+			"url(",
+			"$info",
+			"get_post_meta_noticia_locais",
+			"Local",
+			"Local[",
+			"$Local",
+			"Local",
+			"locais",
+			"add_day_",
+			"click",
+			"del_day",
+			"#dia_",
+			"	\n",
+			"eventos_locais_meta_box",
+			"eventos_locais_meta_box_nonce",
+			"eventos_locais_meta_box",
+			"update_place",
+			"data_inicio",
+			"get_post_meta_evento_locais",
+			"coisas",
+			". ",
+			"asort",
+			"update",
+			"script",
+			"coisas",
+			"load_post_meta",
+			"get_post_meta_evento_locais",
+			"display_post_meta"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"open sans",
+			"\"Droid Sans\"",
+			"\"Droid Sans 400\"",
+			"helvetica",
+			".header-menu-ul",
+			"",
+			"$key",
+			"key",
+			"",
+			"$value",
+			"$field['label']",
+			"$meta_info",
+			"locais[",
+			"$locais",
+			"locais",
+			"Local",
+			"things",
+			"load_post_meta"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "main.sublime-project",
+	"replace":
+	{
+		"height": 38.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 272.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
