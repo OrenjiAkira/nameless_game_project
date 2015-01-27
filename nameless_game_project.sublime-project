@@ -16,7 +16,7 @@
 			"name": "Love2D",
 			"working_dir": "${project_path}",
 			"shell": true,
-			"cmd": ["C:/Program Files/LOVE/love.exe", "${project_path}/game"]
+			"cmd": ["love", "game"]
 		}
 	]
 }

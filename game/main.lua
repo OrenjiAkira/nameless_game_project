@@ -9,7 +9,9 @@ fps = 60
 
 
 function love.load()
-	-- body
+	-- load things
+	window = love.graphics.newCanvas(1024,768)
+	love.graphics.setBackgroundColor(64,64,64)
 end
 
 function love.update( dt )
@@ -23,5 +25,12 @@ function love.update( dt )
 end
 
 function love.draw()
-	-- body
+	-- render things
+
+end
+
+function love.keypressed( key )
+	if key == "escape" then
+		love.event.quit()
+	end
 end
