@@ -1,21 +1,26 @@
 -- user interface > image > character
 
-require 'ui_image'
+require 'graphicUI'
 
-function ui_image_chara( self, file, xquads, yquads )
+function graphicUI_chara( self, file, xquads, yquads )
 
 	-- class construction
-	ui_image( self, file )
+	graphicUI( self, file, { x = window:getWidth()/2, y = window:getHeight()/2 } )
 	local sprite = self:getSprite()
 	local width = self:getWidth()
 	local height = self:getHeight()
 	local quadwidth = self:getQuadWidth(xquads)
 	local quadheight = self:getQuadHeight(yquads)
+	local size = self:getSize()
+	local pos = self:getPos()
+
+	-- local class values
 	local quadgrid = {}
+	local row = 4
+	local col = 1
 	local updateframes = 12
 	local tick = 0
-	local row = 3
-	local col = 1
+
 	
 	for i = 1, yquads do
 		quadgrid[i] = {}
@@ -25,7 +30,7 @@ function ui_image_chara( self, file, xquads, yquads )
 		end
 	end
 
-	function self:update()
+	function self:animate()
 		tick = tick + 1
 		if tick >= updateframes then
 			tick = 0
@@ -34,7 +39,7 @@ function ui_image_chara( self, file, xquads, yquads )
 	end
 
 	function self:draw()
-		love.graphics.draw(sprite, quadgrid[row][col], window:getWidth()/2, window:getHeight()/2, 0, 1, 1, quadwidth/2, quadheight-8)
+		love.graphics.draw(sprite, quadgrid[row][col], window:getWidth()/2, window:getHeight()/2, 0, size, size, quadwidth/2, quadheight-(8*size))
 	end
 
 	return self

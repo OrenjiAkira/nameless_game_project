@@ -1,14 +1,16 @@
 -- user interface > image
 
---require 'ui'
+--require ''
 
-function ui_image( self, file )
+function graphicUI( self, file, _pos )
 
 	local sprite = love.graphics.newImage( '/assets/sprites/' .. file .. '.png' )
 	local width = sprite:getWidth()
 	local height = sprite:getHeight()
-	-- horizontally we change the frame of the image
-	-- vertically we change the image (i.e. change character direction)
+	local pos = _pos
+	local size = 2
+
+	sprite:setFilter( 'nearest', 'nearest' )
 
 	function self:getSprite()
 		return sprite
@@ -18,6 +20,12 @@ function ui_image( self, file )
 	end
 	function self:getHeight()
 		return height
+	end
+	function self:getSize()
+		return size
+	end
+	function self:getPos()
+		return pos
 	end
 	function self:getQuadWidth(xq)
 		return width/xq

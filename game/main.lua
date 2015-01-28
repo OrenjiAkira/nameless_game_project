@@ -1,6 +1,6 @@
 -- main.lua --
 
-require 'ui_image_chara'
+require 'graphicUI_chara'
 
 local dtotal = 0
 local fps = 1/60
@@ -12,7 +12,7 @@ function love.load()
 	if (quadgrid) then
 		print('woops')
 	end
-	player = ui_image_chara( {}, 'avatar', 4, 4 );
+	player = graphicUI_chara( {}, 'avatar', 4, 4 );
 end
 
 function love.update( dt )
@@ -20,7 +20,7 @@ function love.update( dt )
 	while dtotal >= fps do
 		dtotal = dtotal - fps
 		-- do things here
-		player:update()
+		player:animate()
 	end
 end
 
