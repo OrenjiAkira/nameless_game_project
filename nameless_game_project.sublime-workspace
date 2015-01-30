@@ -160,18 +160,15 @@
 	"buffers":
 	[
 		{
-			"contents": "-- main.lua --\n\n\n\n\ndtotal = 0\nfps = 60\n\n\n\nfunction love.load()\n	-- body\nend\n\nfunction love.update( dt )\n	dtotal = dtotal + dt\n  if dtotal >= 1 then\n  	dtotal = dtotal - 1\n  end\nend\n\nfunction love.draw()\n	-- body\nend",
 			"file": "game/main.lua",
-			"file_size": 238,
-			"file_write_time": 130668528067303753,
 			"settings":
 			{
-				"buffer_size": 215,
+				"buffer_size": 591,
 				"line_ending": "Windows"
 			}
 		}
 	],
-	"build_system": "",
+	"build_system": "Love2D",
 	"command_palette":
 	{
 		"height": 0.0,
@@ -203,6 +200,8 @@
 	],
 	"file_history":
 	[
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/nameless_game_project.sublime-project",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/love.lnk",
 		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/single-programa.php",
 		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/style.css",
 		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/main.sublime-workspace",
@@ -377,21 +376,22 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 215,
+						"buffer_size": 591,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								105,
-								105
+								443,
+								443
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"tab_size": 2
+							"tab_size": 2,
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -434,6 +434,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 88.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
