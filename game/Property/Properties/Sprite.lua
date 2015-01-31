@@ -20,7 +20,7 @@ function Sprite( self, element, file, xquads, yquads, _row )
 	local col = 1
 	local updateframes = 6
 	local tick = 0
-	local state = { action='stop', direction='left' }
+	local state = { action='still', direction='left' }
 	
 	local function generateQuads()
 		for i = 1, yquads do
@@ -88,7 +88,7 @@ function Sprite( self, element, file, xquads, yquads, _row )
 	
 	-- update method
 	function self:update()
-		if state.action == 'stop' then
+		if state.action == 'still' then
 			col = 1
 			if state.direction == 'left' then
 				row = 1

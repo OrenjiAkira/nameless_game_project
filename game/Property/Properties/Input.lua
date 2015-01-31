@@ -44,7 +44,7 @@ function Input( self, element )
 			end
 		else
 			-- stop movement animation
-			element:getProperty('Sprite'):setState('stop')
+			element:getProperty('Sprite'):setState('still')
 		end
 	end
 
