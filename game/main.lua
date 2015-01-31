@@ -8,7 +8,7 @@ require 'Property/Properties/Position'
 require 'Property/Properties/Sprite'
 
 local dtotal = 0
-local fps = 1/60
+local fps = 1/30
 
 elements = {}
 unit = 16

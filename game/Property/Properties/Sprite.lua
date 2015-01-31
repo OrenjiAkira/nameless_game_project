@@ -18,7 +18,7 @@ function Sprite( self, element, file, xquads, yquads, _row )
 	local quadgrid = {}
 	local row = _row or 1
 	local col = 1
-	local updateframes = 12
+	local updateframes = 6
 	local tick = 0
 	local state = { action='stop', direction='left' }
 	

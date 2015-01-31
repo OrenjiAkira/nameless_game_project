@@ -9,7 +9,7 @@ function Movement( self, element )
 
 	local speed = 0
 	local acc = 0.05
-	local speedlimit = 0.35
+	local speedlimit = 0.4
 	local direction
 
 	-- gets speed
