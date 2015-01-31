@@ -20,6 +20,7 @@ function Sprite( self, element, file, xquads, yquads, _row )
 	local col = 1
 	local updateframes = 12
 	local tick = 0
+	local state = { action='stop', direction='left' }
 	
 	local function generateQuads()
 		for i = 1, yquads do
@@ -38,6 +39,15 @@ function Sprite( self, element, file, xquads, yquads, _row )
 		renderpos.x = pos.x*unit
 		renderpos.y = pos.y*unit
 		return renderpos
+	end
+	
+	-- walk animation
+	local function walkanimation()
+		tick = tick + 1
+		if tick >= updateframes then
+			tick = 0
+			col = (col % xquads) + 1
+		end
 	end
 
 	-- gets sprite's width
@@ -65,12 +75,36 @@ function Sprite( self, element, file, xquads, yquads, _row )
 		return size
 	end
 
+	-- get state
+	function self:getState()
+		return state
+	end
+	-- set state
+	function self:setState(action, direction)
+		state.action = action
+		state.direction = direction or state.direction
+	end
+
+	
 	-- update method
 	function self:update()
-		tick = tick + 1
-		if tick >= updateframes then
-			tick = 0
-			col = (col % xquads) + 1
+		if state.action == 'stop' then
+			col = 1
+			if state.direction == 'left' then
+				row = 1
+			end
+			if state.direction == 'right' then
+				row = 2
+			end
+		end
+		if state.action == 'walk' then
+			if state.direction == 'left' then
+				row = 3
+			end
+			if state.direction == 'right' then
+				row = 4
+			end
+			walkanimation()
 		end
 	end
 

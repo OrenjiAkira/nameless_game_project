@@ -35,8 +35,16 @@ function Input( self, element )
 	function self:isMovement()
 		if love.keyboard.isDown('up', 'down', 'right', 'left') then
 			calcAngle()
+			if love.keyboard.isDown('left') then
+				element:getProperty('Sprite'):setState('walk','left')
+			elseif love.keyboard.isDown('right') then
+				element:getProperty('Sprite'):setState('walk','right')
+			else
+				element:getProperty('Sprite'):setState('walk')
+			end
 			return true
 		else
+			element:getProperty('Sprite'):setState('stop')
 			return false
 		end
 	end

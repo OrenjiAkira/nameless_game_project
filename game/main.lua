@@ -17,21 +17,25 @@ function love.load()
 	-- load things
 	window = love.graphics.newCanvas(1280,720)
 	love.graphics.setBackgroundColor(200, 200, 200)
-	if (quadgrid) then
-		print('woops')
-	end
-	local player = addElement('player', true, {name='avatar', qx=4, qy=4, row=3}, true, true)
-	local squall = addElement('squall', true, {name='squall', qx=1, qy=1} )
-	--[[
-	player:addProperty( Position				(	{}, player) )
-	player:addProperty( Sprite					(	{}, player, 'avatar', 4, 4) )
-	player:addProperty( Input		  			( {}, player) )
-	player:addProperty( Movement  			( {}, player) )
-	]]--
-	player:getProperty('Position'):setPos( (window:getWidth()/unit)/2, (window:getHeight()/unit)/2 )
-	squall:getProperty('Position'):setPos( (window:getWidth()/unit)/3, (window:getHeight()/unit)/2 )
+
+	local player = addElement(
+		'player',
+		true,
+		{ name = 'avatar', qx = 4, qy = 4, row = 3},
+		true,
+		true
+	)
+	local jeff = addElement(
+		'jeff',
+		true,
+		{name='jeff', qx=1, qy=1}
+	)
+
+	player:getProperty('Position'):setPos( 48, 32 )
+	jeff:getProperty('Position'):setPos( 24, 32 )
+
+	elements[jeff:getId()] = jeff
 	elements[player:getId()] = player
-	elements[squall:getId()] = squall
 end
 
 function love.update( dt )
@@ -64,6 +68,7 @@ function love.keypressed(key)
 	if key == 'escape' then
 		love.event.quit()
 	end
+
 end
 
 function addElement(name, pos, sprite, movement, input )
