@@ -68,7 +68,6 @@ function love.keypressed(key)
 	if key == 'escape' then
 		love.event.quit()
 	end
-
 end
 
 function addElement(name, pos, sprite, movement, input )

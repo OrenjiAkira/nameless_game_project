@@ -2,11 +2,9 @@
 
 
 
-function Element( self, id )
+function Element( self, name )
 
-	if not id then
-		local id
-	end
+	local id = name
 	local properties = {}
 
 	function self:getId()
