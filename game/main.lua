@@ -21,14 +21,14 @@ function love.load()
 	local player = addElement(
 		'player',
 		true,
-		{ name = 'avatar', qx = 4, qy = 4, row = 3},
+		{ name = 'avatar', qx = 4, qy = 4 },
 		true,
 		true
 	)
 	local jeff = addElement(
 		'jeff',
 		true,
-		{name='jeff', qx=1, qy=1}
+		{ name='jeff', qx=1, qy=1 }
 	)
 
 	player:getProperty('Position'):setPos( 48, 32 )
