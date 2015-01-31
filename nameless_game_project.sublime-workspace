@@ -4,6 +4,70 @@
 		"selected_items":
 		[
 			[
+				"walk",
+				"walkanimation"
+			],
+			[
+				"pos",
+				"Position"
+			],
+			[
+				"get",
+				"getProperty"
+			],
+			[
+				"add",
+				"addElement"
+			],
+			[
+				"is",
+				"isMovement"
+			],
+			[
+				"pro",
+				"properties"
+			],
+			[
+				"Prop",
+				"property"
+			],
+			[
+				"prop",
+				"properties"
+			],
+			[
+				"key",
+				"keypressed"
+			],
+			[
+				"spe",
+				"speedlimit"
+			],
+			[
+				"spee",
+				"speedlimit"
+			],
+			[
+				"y",
+				"yquads"
+			],
+			[
+				"x",
+				"xquads"
+			],
+			[
+				"_",
+				"_speed"
+			],
+			[
+				"fun",
+				"function	function"
+			],
+			[
+				"graphic",
+				"graphicUI"
+			],
+			[
 				"prev",
 				"prev_slide"
 			],
@@ -146,27 +210,11 @@
 			[
 				"var",
 				"var_dump"
-			],
-			[
-				"fun",
-				"function"
-			],
-			[
-				"is",
-				"is_array"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "game/main.lua",
-			"settings":
-			{
-				"buffer_size": 591,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "Love2D",
 	"command_palette":
@@ -195,11 +243,30 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project",
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game"
+		"/C/Akira/Other Media/game projects/nameless_game_project",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties"
 	],
 	"file_history":
 	[
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/main.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element/Element.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Movement.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Input.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Sprite.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Position.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Properties/Input.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Properties/Movement.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Properties/Position.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Properties/Sprite.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Properties/Property.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Action_Movement.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Action.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element_Chara.lua",
 		"/C/Users/8010041/Documents/GitHub/nameless_game_project/nameless_game_project.sublime-project",
 		"/C/Users/8010041/Documents/GitHub/nameless_game_project/love.lnk",
 		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/single-programa.php",
@@ -259,6 +326,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"stop",
+			"squall",
+			"movem",
+			"input",
+			"getPro",
+			"spd",
+			"speed",
+			"graphicUI",
 			"border: none",
 			"border",
 			"\"pr",
@@ -339,6 +414,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"jeff",
+			"speed",
+			"spd",
 			"open sans",
 			"\"Droid Sans\"",
 			"\"Droid Sans 400\"",
@@ -367,39 +445,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "game/main.lua",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 591,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								443,
-								443
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
