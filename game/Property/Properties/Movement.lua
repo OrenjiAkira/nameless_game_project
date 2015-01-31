@@ -54,7 +54,8 @@ function Movement( self, element )
 
 	-- update method
 	function self:update()
-		if element:getProperty('Input'):isMovement() then
+		local moving = element:getProperty('Input'):isMovement()
+		if moving then
 			direction = element:getProperty('Input'):getDirection()
 			go()
 		else
