@@ -62,9 +62,6 @@ function Movement( self, element )
 			local x = dx + pos.x
 	    local y = dy + pos.y
 	    element:getProperty('Position'):setPos( x, y )
-	    if element:getProperty('Camera') then 
-	    	element:getProperty('Camera'):setTranslate( dx, dy )
-	    end
 	  end
 	end
 

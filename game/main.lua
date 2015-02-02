@@ -1,12 +1,13 @@
 -- Main --
 
 require 'Element/Element'
+require 'Element/Camera'
 require 'Property/Property'
 require 'Property/Properties/Input'
 require 'Property/Properties/Movement'
 require 'Property/Properties/Position'
 require 'Property/Properties/Sprite'
-require 'Property/Properties/Camera'
+require 'Property/Properties/Translate'
 
 local dtotal = 0
 local fps = 1/30
@@ -21,14 +22,6 @@ function love.load()
 	window = love.graphics.newCanvas(1280,720)
 	love.graphics.setBackgroundColor(200, 200, 200)
 
-	camera = addElement(
-		'camera',
-		true,
-		false,
-		true,
-		true
-	)
-	camera:addProperty( Camera({}, camera ) )
 	local player = addElement(
 		'player',
 		true,
@@ -41,14 +34,19 @@ function love.load()
 		true,
 		{ name='jeff', qx=1, qy=1 }
 	)
-
-	camera:getProperty('Position'):setPos( 48, 32 )
+	
 	player:getProperty('Position'):setPos( 48, 32 )
 	jeff:getProperty('Position'):setPos( 24, 32 )
 
 	elements[jeff:getId()] = jeff
 	elements[player:getId()] = player
-	elements[camera:getId()] = camera
+
+	camera = Camera( {}, 'camera' )
+	
+	camera:addProperty( Position({}, camera ) )
+	camera:addProperty( Input({}, camera ) )
+	camera:addProperty( Movement({}, camera ) )
+	camera:addProperty( Translate({}, camera ) )
 
 end
 
@@ -56,7 +54,11 @@ function love.update( dt )
 	dtotal = dtotal + dt
 	while dtotal >= fps do
 		dtotal = dtotal - fps
+
 		-- do things here
+
+		camera:update()
+
 		for _,element in pairs(elements) do
 			if element:getProperty('Input') then
 				element:getProperty('Input'):update()
@@ -72,11 +74,12 @@ function love.update( dt )
 end
 
 function love.draw()
+	
 	-- render things
+
+	camera:render()
+	
 	for _,element in pairs(elements) do
-		if element:getProperty('Camera') then
-			element:getProperty('Camera'):render()
-		end
 		if element:getProperty('Sprite') then
 			element:getProperty('Sprite'):render()
 		end

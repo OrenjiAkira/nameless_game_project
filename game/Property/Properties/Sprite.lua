@@ -14,7 +14,7 @@ function Sprite( self, element, file, xquads, yquads, _row )
 	local height = sprite:getHeight()
 	local quadwidth = width/xquads
 	local quadheight = height/yquads
-	local size = 2
+	local size = zoom
 	local quadgrid = {}
 	local row = _row or 1
 	local col = 1
