@@ -6,18 +6,29 @@ require 'Property/Properties/Input'
 require 'Property/Properties/Movement'
 require 'Property/Properties/Position'
 require 'Property/Properties/Sprite'
+require 'Property/Properties/Camera'
 
 local dtotal = 0
 local fps = 1/30
 
 elements = {}
 unit = 16
+camera = {}
+zoom = 2
 
 function love.load()
 	-- load things
 	window = love.graphics.newCanvas(1280,720)
 	love.graphics.setBackgroundColor(200, 200, 200)
 
+	camera = addElement(
+		'camera',
+		true,
+		false,
+		true,
+		true
+	)
+	camera:addProperty( Camera({}, camera ) )
 	local player = addElement(
 		'player',
 		true,
@@ -31,11 +42,14 @@ function love.load()
 		{ name='jeff', qx=1, qy=1 }
 	)
 
+	camera:getProperty('Position'):setPos( 48, 32 )
 	player:getProperty('Position'):setPos( 48, 32 )
 	jeff:getProperty('Position'):setPos( 24, 32 )
 
 	elements[jeff:getId()] = jeff
 	elements[player:getId()] = player
+	elements[camera:getId()] = camera
+
 end
 
 function love.update( dt )
@@ -60,7 +74,12 @@ end
 function love.draw()
 	-- render things
 	for _,element in pairs(elements) do
-		element:getProperty('Sprite'):render()
+		if element:getProperty('Camera') then
+			element:getProperty('Camera'):render()
+		end
+		if element:getProperty('Sprite') then
+			element:getProperty('Sprite'):render()
+		end
 	end
 end
 
@@ -70,7 +89,7 @@ function love.keypressed(key)
 	end
 end
 
-function addElement(name, pos, sprite, movement, input )
+function addElement( name, pos, sprite, movement, input )
 	local element = Element({}, name)
 	if pos then element:addProperty( Position ( {}, element ) ) end
 	if sprite then element:addProperty( Sprite ( {}, element, sprite.name, sprite.qx, sprite.qy, sprite.row ) ) end

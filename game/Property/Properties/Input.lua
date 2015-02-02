@@ -12,24 +12,55 @@ function Input( self, element )
 	-- calculate movement polar coordinate
 	local function calcAngle()
 		local angle
-		if love.keyboard.isDown( 'left' ) and not love.keyboard.isDown( 'up', 'down' ) then
-	    angle = math.pi
-	  elseif love.keyboard.isDown( 'right' ) and not love.keyboard.isDown( 'up', 'down' ) then
-	    angle = 0
-	  elseif love.keyboard.isDown( 'up' ) and not love.keyboard.isDown( 'left', 'right' ) then
-	    angle = 3*math.pi/2
-	  elseif love.keyboard.isDown( 'down' ) and not love.keyboard.isDown( 'left', 'right' ) then
-	    angle = math.pi/2
-	  elseif love.keyboard.isDown( 'up' ) and love.keyboard.isDown( 'right' ) then
-	    angle = 7*math.pi/4
-	  elseif love.keyboard.isDown( 'up' ) and love.keyboard.isDown( 'left' ) then
-	    angle = 5*math.pi/4
-	  elseif love.keyboard.isDown( 'down' ) and love.keyboard.isDown( 'right' ) then
-	    angle = math.pi/4
-	  elseif love.keyboard.isDown( 'down' ) and love.keyboard.isDown( 'left' ) then
-	    angle = 3*math.pi/4
-	  end
+		local vector = { x = 0, y = 0 }
+		local l, r, u, d = false, false, false, false
+
+		if love.keyboard.isDown( 'left' ) then
+			vector.x = vector.x - 1
+			l = true
+		end
+		if love.keyboard.isDown( 'right' ) then
+			vector.x = vector.x + 1
+			r = true
+		end
+		if love.keyboard.isDown( 'up' ) then
+			vector.y = vector.y - 1
+			u = true
+		end
+		if love.keyboard.isDown( 'down' ) then
+			vector.y = vector.y + 1
+			d = true
+		end
+
+		if not( l and r ) and not( u and d ) then
+			angle = math.atan2(vector.y, vector.x)
+		elseif ( l and r ) and not( u and d ) then
+			if u then
+				angle = 3*math.pi/2
+			elseif d then
+				angle = math.pi/2
+			else
+				return false
+			end
+		elseif not( l and r) and ( u and d ) then
+			if l then
+				angle = math.pi
+			elseif r then
+				angle = 2*math.pi
+			else
+				return false
+			end
+		else
+			return false
+		end
+
 	  direction = angle
+
+	  if l or r or d or u then
+	  	return true
+	  else
+	  	return false
+	  end
 	end
 	
 	-- set the state of movement animation
@@ -48,15 +79,6 @@ function Input( self, element )
 		end
 	end
 
-	-- gets movement
-	function self:isMovement()
-		if love.keyboard.isDown('up', 'down', 'right', 'left') then
-			return true
-		else
-			return false
-		end
-	end
-
 	-- gets movement direction
 	function self:getDirection()
 		return direction
@@ -64,10 +86,16 @@ function Input( self, element )
 	
 	-- update method
 	function self:update()
-		local moving = self:isMovement()
-		setMovementInputState(moving)
+		local moving = calcAngle()
+		
 		if moving then
-			calcAngle()
+			element:getProperty('Movement'):move(direction)
+		else
+			element:getProperty('Movement'):stop()
+		end
+		
+		if element:getProperty('Sprite') then
+			setMovementInputState(moving)
 		end
 	end
 

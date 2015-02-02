@@ -8,7 +8,7 @@ function Movement( self, element )
 	self:setName('Movement')
 
 	local speed = 0
-	local acc = 0.05
+	local acc = 0.1
 	local speedlimit = 0.4
 	local direction
 
@@ -43,30 +43,28 @@ function Movement( self, element )
 	end
 
 	-- private action methods
-	local function go()
+	function self:move(dir)
+		direction = dir
 		speed = speed + acc
 		if speed > speedlimit then speed = speedlimit end
 	end
-	local function stop()
+	function self:stop()
 		speed = speed - acc
 		if speed < 0 then speed = 0 end
 	end
 
 	-- update method
 	function self:update()
-		local moving = element:getProperty('Input'):isMovement()
-		if moving then
-			direction = element:getProperty('Input'):getDirection()
-			go()
-		else
-			stop()
-		end
-		if direction or speed > 0 then
+		if direction and speed > 0 then
 			local pos = element:getProperty('Position'):getPos()
-			local x = speed*math.cos(direction) + pos.x
-	    local y = speed*math.sin(direction) + pos.y
+			local dx = speed*math.cos(direction)
+			local dy = speed*math.sin(direction)
+			local x = dx + pos.x
+	    local y = dy + pos.y
 	    element:getProperty('Position'):setPos( x, y )
-    	--print(x,y)
+	    if element:getProperty('Camera') then 
+	    	element:getProperty('Camera'):setTranslate( dx, dy )
+	    end
 	  end
 	end
 
