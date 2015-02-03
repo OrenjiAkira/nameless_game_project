@@ -3,8 +3,8 @@
 require 'Element/Element'
 require 'Element/Camera'
 require 'Property/Property'
-require 'Property/Properties/Input'
 require 'Property/Properties/Movement'
+require 'Property/Properties/Movement_Input'
 require 'Property/Properties/Position'
 require 'Property/Properties/Sprite'
 require 'Property/Properties/Translate'
@@ -45,8 +45,8 @@ function love.update( dt )
 		camera:update()
 
 		for _,element in pairs(elements) do
-			if element:getProperty('Input') then
-				element:getProperty('Input'):update()
+			if element:getProperty('Movement_Input') then
+				element:getProperty('Movement_Input'):update()
 			end
 			if element:getProperty('Movement') then
 				element:getProperty('Movement'):update()
@@ -84,7 +84,7 @@ function newElement( type, name )
 		element:addProperty( Position ( {}, element ) )
 		element:addProperty( Sprite ( {}, element, 'avatar', 4, 4 ) )
 		element:addProperty( Movement ( {}, element ) )
-		element:addProperty( Input ( {}, element ) )
+		element:addProperty( Movement_Input ( {}, element ) )
 	end
 	if type == 'npc' then
 		element:addProperty( Position ( {}, element ) )

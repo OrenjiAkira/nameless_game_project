@@ -1,11 +1,11 @@
--- Input --
+-- Movement Input --
 
 
 
-function Input( self, element )
+function Movement_Input( self, element )
 	Property(self, element)
 
-	self:setName('Input')
+	self:setName('Movement_Input')
 
 	local direction
 
