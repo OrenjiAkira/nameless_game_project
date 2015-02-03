@@ -15,8 +15,7 @@ Also, images here are all MINE and done by ME.
 Do not post it anywhere, do not claim it as your own.
 Do not use it for your own projects, be it with some modifications or none.
 If you want to use them for some reason, please contact me at orenjiakira@gmail.com.
-I might sound defensive, but if it's for a good reason I will most certainly allow you to use them...
-*** So long as you ask first and give proper credit! ***
+I might sound defensive, but if it's for a good reason I will most certainly allow you to use them... So long as you ask first and give proper credit!
 
 As for code, you may copy, use, reuse, abuse, modify and do as you please. Credit would be nice, but not needed.
 
