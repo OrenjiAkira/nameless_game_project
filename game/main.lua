@@ -20,33 +20,18 @@ zoom = 2
 function love.load()
 	-- load things
 	window = love.graphics.newCanvas(1280,720)
-	love.graphics.setBackgroundColor(200, 200, 200)
+	love.graphics.setBackgroundColor(0, 0, 0)
 
-	local player = addElement(
-		'player',
-		true,
-		{ name = 'avatar', qx = 4, qy = 4 },
-		true,
-		true
-	)
-	local jeff = addElement(
-		'jeff',
-		true,
-		{ name='jeff', qx=1, qy=1 }
-	)
 	
+	local player = newElement('player')
+	local jeff = newElement('npc', 'jeff')
 	player:getProperty('Position'):setPos( 48, 32 )
 	jeff:getProperty('Position'):setPos( 24, 32 )
 
 	elements[jeff:getId()] = jeff
 	elements[player:getId()] = player
 
-	camera = Camera( {}, 'camera' )
-	
-	camera:addProperty( Position({}, camera ) )
-	camera:addProperty( Input({}, camera ) )
-	camera:addProperty( Movement({}, camera ) )
-	camera:addProperty( Translate({}, camera ) )
+	camera = newElement('camera')
 
 end
 
@@ -92,11 +77,23 @@ function love.keypressed(key)
 	end
 end
 
-function addElement( name, pos, sprite, movement, input )
-	local element = Element({}, name)
-	if pos then element:addProperty( Position ( {}, element ) ) end
-	if sprite then element:addProperty( Sprite ( {}, element, sprite.name, sprite.qx, sprite.qy, sprite.row ) ) end
-	if movement then element:addProperty( Movement ( {}, element ) ) end
-	if input then element:addProperty( Input ( {}, element ) ) end
+function newElement( type, name )
+	local element = Element({}, name or type)
+
+	if type == 'player' then
+		element:addProperty( Position ( {}, element ) )
+		element:addProperty( Sprite ( {}, element, 'avatar', 4, 4 ) )
+		element:addProperty( Movement ( {}, element ) )
+		element:addProperty( Input ( {}, element ) )
+	end
+	if type == 'npc' then
+		element:addProperty( Position ( {}, element ) )
+		element:addProperty( Sprite ( {}, element, name or type, 1, 1 ) )
+		element:addProperty( Movement ( {}, element ) )
+	end
+	if type == 'camera' then
+		element = Camera({}, 'camera')
+	end
+
 	return element
 end
