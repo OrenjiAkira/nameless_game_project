@@ -4,28 +4,20 @@
 		"selected_items":
 		[
 			[
-				"MO",
-				"MovementInput"
+				"player",
+				"playerheight"
 			],
 			[
-				"Mo",
-				"MovementInput"
+				"lo",
+				"love"
 			],
 			[
-				"pro",
-				"property"
+				"el",
+				"elseif"
 			],
 			[
-				"p",
-				"propertyname"
-			],
-			[
-				"ele",
-				"elementname"
-			],
-			[
-				"Hit",
-				"HitBox"
+				"add",
+				"addProperty"
 			],
 			[
 				"walk",
@@ -40,12 +32,12 @@
 				"getProperty"
 			],
 			[
-				"add",
-				"addElement"
-			],
-			[
 				"is",
 				"isMovement"
+			],
+			[
+				"pro",
+				"properties"
 			],
 			[
 				"Prop",
@@ -106,6 +98,10 @@
 			[
 				"text",
 				"text-align"
+			],
+			[
+				"p",
+				"padding"
 			],
 			[
 				"font",
@@ -259,28 +255,24 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project",
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game",
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Element",
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Property",
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Property/Properties"
+		"/C/Akira/Other Media/game projects/nameless_game_project",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties"
 	],
 	"file_history":
 	[
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Property/Properties/MovementInput.lua",
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/main.lua",
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Element/Element.lua",
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Element/Camera.lua",
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Element/ElementManager.lua",
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Property/Properties/HitBox.lua",
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Property/Properties/Sprite.lua",
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Property/Properties/Movement.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Movement_Input.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element/Camera.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/main.lua",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element/Element.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Movement.lua",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Input.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Translate.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Sprite.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Camera.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Position.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Input.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element/Element.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Properties/Input.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Properties/Movement.lua",
@@ -296,6 +288,7 @@
 		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/single-programa.php",
 		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/style.css",
 		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/main.sublime-workspace",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/main.lua",
 		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/_assets/js/mechanics_script.js",
 		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/header.php",
 		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/__footer.php",
@@ -335,7 +328,7 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
@@ -349,12 +342,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"'Movement'",
-			"Movement",
 			"input",
-			"inputt",
-			"element",
-			"manager",
+			"Camera",
+			"camera",
+			"dy",
+			"dx",
+			"ismove",
 			"stop",
 			"squall",
 			"movem",
@@ -443,7 +436,9 @@
 		"regex": false,
 		"replace_history":
 		[
-			"e_manager",
+			"Translate",
+			"y",
+			"x",
 			"jeff",
 			"speed",
 			"spd",
@@ -482,7 +477,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 21.0
+		"height": 28.0
 	},
 	"input":
 	{
@@ -522,7 +517,7 @@
 	"project": "nameless_game_project.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 66.0
 	},
 	"save_all_on_build": true,
 	"select_file":
