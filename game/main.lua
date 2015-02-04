@@ -14,15 +14,15 @@ local dtotal = 0
 local fps = 1/30
 
 elements = {}
-unit = 16
 camera = {}
+
+unit = 16
 zoom = 2
 
 function love.load()
 	-- load things
 	window = love.graphics.newCanvas(1280,720)
 	love.graphics.setBackgroundColor(0, 0, 0)
-
 	
 	local player = newElement('player')
 	local jeff = newElement('npc', 'jeff')
@@ -89,10 +89,10 @@ function newElement( type, name )
 		element:addProperty( Movement ( {}, element ) )
 		element:addProperty( MovementInput ( {}, element ) )
 		-- setting properties
-		local w = element:getProperty('Sprite'):getQuadWidth() - 16
-		local h = element:getProperty('Sprite'):getQuadHeight() - 8
-		element:getProperty('HitBox'):setWidth(w)
-		element:getProperty('HitBox'):setHeight(h)
+		local w = element:getAttribute( 'Sprite', 'QuadWidth' )
+		local h = element:getAttribute( 'Sprite', 'QuadHeight' )
+		element:setAttribute( 'HitBox', 'Width', w-16 )
+		element:setAttribute( 'HitBox', 'Height', h-8 )
 	end
 	if type == 'npc' then
 		element:addProperty( Position ( {}, element ) )
