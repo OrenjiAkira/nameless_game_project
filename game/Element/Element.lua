@@ -19,12 +19,10 @@ function Element( self, name )
 	
 	function self:getAttribute( propertyname, attribute )
 		local property = self:getProperty(propertyname)
-		print('getting '.. attribute)
 		return property['get'..attribute]( property )
 	end
 	function self:setAttribute( propertyname, attribute, ... )
 		local property = self:getProperty(propertyname)
-		print('setting '.. attribute ..' to ' .. ...)
 		property['set'..attribute]( property, ... )
 	end
 
