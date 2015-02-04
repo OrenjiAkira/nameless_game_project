@@ -3,10 +3,11 @@
 require 'Element/Element'
 require 'Element/Camera'
 require 'Property/Property'
-require 'Property/Properties/Movement'
-require 'Property/Properties/Movement_Input'
 require 'Property/Properties/Position'
+require 'Property/Properties/HitBox'
 require 'Property/Properties/Sprite'
+require 'Property/Properties/MovementInput'
+require 'Property/Properties/Movement'
 require 'Property/Properties/Translate'
 
 local dtotal = 0
@@ -45,8 +46,8 @@ function love.update( dt )
 		camera:update()
 
 		for _,element in pairs(elements) do
-			if element:getProperty('Movement_Input') then
-				element:getProperty('Movement_Input'):update()
+			if element:getProperty('MovementInput') then
+				element:getProperty('MovementInput'):update()
 			end
 			if element:getProperty('Movement') then
 				element:getProperty('Movement'):update()
@@ -81,14 +82,22 @@ function newElement( type, name )
 	local element = Element({}, name or type)
 
 	if type == 'player' then
+		-- adding properties
 		element:addProperty( Position ( {}, element ) )
 		element:addProperty( Sprite ( {}, element, 'avatar', 4, 4 ) )
+		element:addProperty( HitBox ( {}, element ) )
 		element:addProperty( Movement ( {}, element ) )
-		element:addProperty( Movement_Input ( {}, element ) )
+		element:addProperty( MovementInput ( {}, element ) )
+		-- setting properties
+		local w = element:getProperty('Sprite'):getQuadWidth() - 16
+		local h = element:getProperty('Sprite'):getQuadHeight() - 8
+		element:getProperty('HitBox'):setWidth(w)
+		element:getProperty('HitBox'):setHeight(h)
 	end
 	if type == 'npc' then
 		element:addProperty( Position ( {}, element ) )
 		element:addProperty( Sprite ( {}, element, name or type, 1, 1 ) )
+		element:addProperty( HitBox ( {}, element ) )
 		element:addProperty( Movement ( {}, element ) )
 	end
 	if type == 'camera' then

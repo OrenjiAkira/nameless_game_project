@@ -1,11 +1,11 @@
 -- Movement Input --
 
+-- only works on elements with movement
 
-
-function Movement_Input( self, element )
+function MovementInput( self, element )
 	Property(self, element)
 
-	self:setName('Movement_Input')
+	self:setName('MovementInput')
 
 	local direction
 

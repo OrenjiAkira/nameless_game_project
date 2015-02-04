@@ -1,6 +1,6 @@
 -- Sprite --
 
-
+-- only works with position
 
 function Sprite( self, element, file, xquads, yquads, _row )
 	Property(self, element)

@@ -1,6 +1,6 @@
 -- Movement --
 
-
+-- only works on elements with position
 
 function Movement( self, element )
 	Property(self, element)
