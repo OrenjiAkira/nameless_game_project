@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"MO",
+				"MovementInput"
+			],
+			[
+				"Mo",
+				"MovementInput"
+			],
+			[
+				"pro",
+				"property"
+			],
+			[
+				"p",
+				"propertyname"
+			],
+			[
+				"ele",
+				"elementname"
+			],
+			[
+				"Hit",
+				"HitBox"
+			],
+			[
 				"walk",
 				"walkanimation"
 			],
@@ -22,10 +46,6 @@
 			[
 				"is",
 				"isMovement"
-			],
-			[
-				"pro",
-				"properties"
 			],
 			[
 				"Prop",
@@ -86,10 +106,6 @@
 			[
 				"text",
 				"text-align"
-			],
-			[
-				"p",
-				"padding"
 			],
 			[
 				"font",
@@ -215,14 +231,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "game/main.lua",
-			"settings":
-			{
-				"buffer_size": 2154,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "Love2D",
 	"command_palette":
@@ -259,7 +267,14 @@
 	],
 	"file_history":
 	[
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Property/Properties/MovementInput.lua",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/main.lua",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Element/Element.lua",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Element/Camera.lua",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Element/ElementManager.lua",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Property/Properties/HitBox.lua",
 		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Property/Properties/Sprite.lua",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Property/Properties/Movement.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/main.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element/Element.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Movement.lua",
@@ -281,7 +296,6 @@
 		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/single-programa.php",
 		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/style.css",
 		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/main.sublime-workspace",
-		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/main.lua",
 		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/_assets/js/mechanics_script.js",
 		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/header.php",
 		"/C/xampp/htdocs/prceu/wp-content/themes/Prceu/__footer.php",
@@ -335,6 +349,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"'Movement'",
+			"Movement",
+			"input",
+			"inputt",
+			"element",
+			"manager",
 			"stop",
 			"squall",
 			"movem",
@@ -423,6 +443,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"e_manager",
 			"jeff",
 			"speed",
 			"spd",
@@ -454,38 +475,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "game/main.lua",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 2154,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								458,
-								467
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": -0.0,
-						"translation.y": 429.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
