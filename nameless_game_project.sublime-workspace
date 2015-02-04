@@ -215,6 +215,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "game/main.lua",
+			"settings":
+			{
+				"buffer_size": 2154,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "Love2D",
 	"command_palette":
@@ -243,14 +251,15 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Akira/Other Media/game projects/nameless_game_project",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties"
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Element",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Property",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Property/Properties"
 	],
 	"file_history":
 	[
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Property/Properties/Sprite.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/main.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element/Element.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Movement.lua",
@@ -445,8 +454,38 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "game/main.lua",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2154,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								458,
+								467
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 429.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],

@@ -218,3 +218,4 @@ pip-log.txt
 #sublime project files
 *.sublime-workspace
 *.sublime-workspace
+*.sublime-workspace
