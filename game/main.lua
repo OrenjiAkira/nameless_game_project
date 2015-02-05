@@ -34,12 +34,13 @@ function love.load()
 	window = love.graphics.newCanvas(1280,720)
 	love.graphics.setBackgroundColor(0, 0, 0)
 	
-	camera = elements:newElement('camera')
 	local player = elements:newElement('player')
 	local jeff = elements:newElement('npc', 'jeff')
 
 	player:setAttribute('Body', 'Pos', 48, 32)
 	jeff:setAttribute('Body', 'Pos', 24, 32)
+
+	camera = elements:newElement('camera')
 
 end
 
@@ -54,12 +55,13 @@ function love.update( dt )
 		camera:update()
 
 		for _,element in pairs(elements) do
-			if element 
-			if element:getProperty('Body') then
-				element:getProperty('Body'):update()
-			end
-			if element:getProperty('Sprite') then
-				element:getProperty('Sprite'):update()
+			if isTable(element) then
+				if element:getProperty('Body') then
+					element:getProperty('Body'):update()
+				end
+				if element:getProperty('Sprite') then
+					element:getProperty('Sprite'):update()
+				end
 			end
 		end
 	end
@@ -72,8 +74,10 @@ function love.draw()
 	camera:render()
 	
 	for _,element in pairs(elements) do
-		if element:getProperty('Sprite') then
-			element:getProperty('Sprite'):render()
+		if isTable(element) then
+			if element:getProperty('Sprite') then
+				element:getProperty('Sprite'):render()
+			end
 		end
 	end
 end
@@ -87,3 +91,6 @@ end
 function isTable(t)
 	if type(t) == 'table' then return true else return false end
 end
+
+
+

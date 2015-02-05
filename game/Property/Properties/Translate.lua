@@ -9,11 +9,11 @@ function Translate(self, element)
 
 	-- local variables
 	local x, y = 0, 0 --not world position, but render position
-	local playerheight = elements['player']:getAttribute('Sprite', 'QuadHeight')
+	local playerheight = elements:getElement('player'):getAttribute('Sprite', 'QuadHeight')
 
 	-- local methods
 	local function constructor()
-		local pos = elements['player']:getAttribute('Body', 'Pos')
+		local pos = elements:getElement('player'):getAttribute('Body', 'Pos')
 		element:setAttribute('Body', 'Pos', pos.x, pos.y)
 	end
 

@@ -3,6 +3,8 @@
 
 
 function ElementList( self )
+	
+	local elist = {}
 
 	local function newPlayer()
 
@@ -22,7 +24,6 @@ function ElementList( self )
 		sprite:addEvent( Sprite_MovementInput({}, sprite) )
 		-- add sprite to element
 		element:addProperty( sprite )
-
 		return element
 	end
 
@@ -30,19 +31,19 @@ function ElementList( self )
 
 		local element = Camera({}, 'camera')
 
-		local body = Body({}, self )
+		local body = Body({}, element )
 		body:addEvent( Body_MovementInput({}, body ) )
 		body:addEvent( Body_Collision({}, body ) )
-		self:addProperty( body )
+		element:addProperty( body )
 
-		self:addProperty( Translate({}, self ) )
+		element:addProperty( Translate({}, element ) )
 
 		return element
 	end
 
 	local function newNPC(name)
 
-		local element = Element({}, 'player')
+		local element = Element({}, name)
 
 		-- create body property
 		local body = Body( {}, element )
@@ -60,7 +61,15 @@ function ElementList( self )
 	end
 
 	function self:addElement(element)
-		self[element:getId()] = element
+		local name = element:getId()
+		print(name)
+		elist[name] = element
+	end
+	function self:getElement(elementname)
+		return elist[elementname]
+	end
+	function self:getElist()
+		return elist
 	end
 
 	function self:newElement( type, name )
@@ -74,7 +83,7 @@ function ElementList( self )
 		if type == 'npc' then
 			element = newNPC(name)
 		end
-		if not type == 'camera' then self:addElement(element) end
+		self:addElement(element)
 		return element
 	end
 
