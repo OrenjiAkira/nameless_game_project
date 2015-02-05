@@ -89,30 +89,38 @@ function newElement( type, name )
 	if type == 'player' then
 		
 		-- adding properties
-		element:addProperty( HitBox ( {}, element ) )
-		local sprite = Sprite( {}, element, 'avatar', 4, 4 )
+
+		-- create body property
 		local body = Body( {}, element )
-
-		sprite:addEvent( Sprite_MovementInput({}, sprite) )
-
+		-- add body events: MovementInput, Collision, ...
 		body:addEvent( Body_MovementInput({}, body) )
 		body:addEvent( Body_Collision({}, body) )
-
-		element:addProperty( sprite )
+		-- add body to element
 		element:addProperty( body )
 
-		-- setting properties
-		local w = element:getAttribute( 'Sprite', 'QuadWidth' )
-		local h = element:getAttribute( 'Sprite', 'QuadHeight' )
-		element:setAttribute( 'HitBox', 'Width', w-16 )
-		element:setAttribute( 'HitBox', 'Height', h-8 )
+		-- create sprite property
+		local sprite = Sprite( {}, element, 'avatar', 4, 4 )
+		-- add sprite events: MovementInput, ...
+		sprite:addEvent( Sprite_MovementInput({}, sprite) )
+		-- add sprite to element
+		element:addProperty( sprite )
 
 	end
 	if type == 'npc' then
-		
-		element:addProperty( Sprite ( {}, element, name or type, 1, 1 ) )
-		element:addProperty( HitBox ( {}, element ) )
-		element:addProperty( Body ( {}, element ) )
+
+		-- adding properties
+
+		-- create body property
+		local body = Body( {}, element )
+		-- add body events: Collision, ...
+		body:addEvent( Body_Collision({}, body) )
+		-- add body to element
+		element:addProperty( body )
+
+		-- create sprite property
+		local sprite = Sprite ( {}, element, name or type, 1, 1 )
+		-- add sprite to element
+		element:addProperty( sprite )
 
 	end
 	if type == 'camera' then

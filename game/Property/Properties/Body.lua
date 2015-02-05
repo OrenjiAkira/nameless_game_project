@@ -7,11 +7,30 @@ function Body( self, element )
 
 	self:setName('Body')
 
+	local width
+	local height
 	local pos = { x, y }
 	local speed = 0
 	local acc = 0.1
 	local speedlimit = 0.4
 	local direction
+
+	-- gets width
+	function self:getWidth()
+		return width
+	end
+	-- gets height
+	function self:getHeight()
+		return height
+	end
+	-- sets width
+	function self:setWidth(newwidth)
+		width = newwidth
+	end
+	-- sets height
+	function self:setHeight(newheight)
+		height = newheight
+	end
 
 	-- gets position
 	function self:getPos()

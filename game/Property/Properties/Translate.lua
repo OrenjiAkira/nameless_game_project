@@ -12,7 +12,7 @@ function Translate(self, element)
 	local playerheight = elements['player']:getAttribute('Sprite', 'QuadHeight')
 
 	-- local methods
-	local function constructor( ... )
+	local function constructor()
 		local pos = elements['player']:getAttribute('Body', 'Pos')
 		element:setAttribute('Body', 'Pos', pos.x, pos.y)
 	end
