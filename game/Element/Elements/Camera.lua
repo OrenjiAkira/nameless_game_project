@@ -8,9 +8,9 @@ function Camera(self, name)
 	local function constructor()
 		local body = Body({}, self )
 		body:addEvent( Body_MovementInput({}, body ) )
+		body:addEvent( Body_Collision({}, body ) )
 		self:addProperty( body )
 
-		self:addProperty( HitBox ( {}, element ) )
 		self:addProperty( Translate({}, self ) )
 	end
 	function self:update()

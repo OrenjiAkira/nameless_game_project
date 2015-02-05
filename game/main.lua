@@ -7,7 +7,6 @@ require 'Element/Elements/Camera'
 
 require 'Property/Property'
 require 'Property/Properties/Sprite'
-require 'Property/Properties/HitBox'
 require 'Property/Properties/Body'
 require 'Property/Properties/Translate'
 
