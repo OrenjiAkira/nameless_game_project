@@ -7,13 +7,15 @@ function Camera(self, name)
 
 	local function constructor()
 		self:addProperty( Position({}, self ) )
-		self:addProperty( Movement({}, self ) )
-		self:addProperty( MovementInput({}, self ) )
+		
+		local movement = Movement({}, self )
+		movement:addEvent( MovementInput({}, movement ) )
+
+		self:addProperty( movement )
 		self:addProperty( HitBox ( {}, element ) )
 		self:addProperty( Translate({}, self ) )
 	end
 	function self:update()
-		self:getProperty('MovementInput'):update()
 		self:getProperty('Movement'):update()
 		self:getProperty('Translate'):update()
 	end

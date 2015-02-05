@@ -3,7 +3,7 @@
 -- only works on elements with position
 
 function Movement( self, element )
-	Property(self, element)
+	Property(self)
 
 	self:setName('Movement')
 
@@ -55,6 +55,7 @@ function Movement( self, element )
 
 	-- update method
 	function self:update()
+		self:updateEvents()
 		if direction and speed > 0 then
 			local pos = element:getProperty('Position'):getPos()
 			local dx = speed*math.cos(direction)

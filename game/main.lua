@@ -1,18 +1,26 @@
 -- Main --
 
+require 'input'
+
 require 'Element/Element'
-require 'Element/Camera'
+require 'Element/Elements/Camera'
+
 require 'Property/Property'
-require 'Property/Properties/Position'
-require 'Property/Properties/HitBox'
 require 'Property/Properties/Sprite'
-require 'Property/Properties/MovementInput'
+require 'Property/Properties/HitBox'
+require 'Property/Properties/Position'
 require 'Property/Properties/Movement'
 require 'Property/Properties/Translate'
+
+require 'Event/Event'
+require 'Event/Events/SpriteInput'
+require 'Event/Events/MovementInput'
+require 'Event/Events/MovementCollision'
 
 local dtotal = 0
 local fps = 1/30
 
+input = input( {} )
 elements = {}
 camera = {}
 
@@ -46,9 +54,6 @@ function love.update( dt )
 		camera:update()
 
 		for _,element in pairs(elements) do
-			if element:getProperty('MovementInput') then
-				element:getProperty('MovementInput'):update()
-			end
 			if element:getProperty('Movement') then
 				element:getProperty('Movement'):update()
 			end
@@ -82,23 +87,35 @@ function newElement( type, name )
 	local element = Element({}, name or type)
 
 	if type == 'player' then
+		
 		-- adding properties
 		element:addProperty( Position ( {}, element ) )
-		element:addProperty( Sprite ( {}, element, 'avatar', 4, 4 ) )
 		element:addProperty( HitBox ( {}, element ) )
-		element:addProperty( Movement ( {}, element ) )
-		element:addProperty( MovementInput ( {}, element ) )
+		local sprite = Sprite( {}, element, 'avatar', 4, 4 )
+		local movement = Movement( {}, element )
+
+		sprite:addEvent( SpriteInput({}, sprite) )
+
+		movement:addEvent( MovementInput({}, movement) )
+		movement:addEvent( MovementCollision({}, movement) )
+
+		element:addProperty( sprite )
+		element:addProperty( movement )
+
 		-- setting properties
 		local w = element:getAttribute( 'Sprite', 'QuadWidth' )
 		local h = element:getAttribute( 'Sprite', 'QuadHeight' )
 		element:setAttribute( 'HitBox', 'Width', w-16 )
 		element:setAttribute( 'HitBox', 'Height', h-8 )
+
 	end
 	if type == 'npc' then
+		
 		element:addProperty( Position ( {}, element ) )
 		element:addProperty( Sprite ( {}, element, name or type, 1, 1 ) )
 		element:addProperty( HitBox ( {}, element ) )
 		element:addProperty( Movement ( {}, element ) )
+
 	end
 	if type == 'camera' then
 		element = Camera({}, 'camera')
