@@ -29,7 +29,7 @@ function input(self)
 
 			if down and not up then
 				return directional_input
-			elseif not down and up then
+			elseif up and not down then
 				return directional_input
 			else
 				return false
@@ -42,7 +42,7 @@ function input(self)
 
 			if left and not right then
 				return directional_input
-			elseif not left and right then
+			elseif right and not left then
 				return directional_input
 			else
 				return false
