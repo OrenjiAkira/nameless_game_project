@@ -35,10 +35,12 @@ function love.load()
 	love.graphics.setBackgroundColor(0, 0, 0)
 	
 	local player = elements:newElement('player')
-	local jeff = elements:newElement('npc', 'jeff')
+	player:setAttribute('Body', 'Pos', 16, 0)
+	player:setAttribute('Sprite', 'Offset', 32, 113)
 
-	player:setAttribute('Body', 'Pos', 48, 32)
-	jeff:setAttribute('Body', 'Pos', 24, 32)
+	local jeff = elements:newElement('npc', 'jeff')
+	jeff:setAttribute('Body', 'Pos', 8, 0)
+	jeff:setAttribute('Sprite', 'Offset', 64, 124)
 
 	camera = elements:newElement('camera')
 

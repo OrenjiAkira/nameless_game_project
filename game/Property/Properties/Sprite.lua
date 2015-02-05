@@ -2,22 +2,28 @@
 
 -- only works with position
 
-function Sprite( self, element, file, xquads, yquads, _row )
+function Sprite( self, element, file, xquads, yquads )
 	Property(self, element)
 
 	self:setName('Sprite')
 	
-	local sprite = love.graphics.newImage( '/assets/sprites/' .. file .. '.png' )
-	sprite:setFilter( 'nearest', 'nearest' )
+	local spritesheet = love.graphics.newImage( '/assets/sprites/' .. file .. '.png' )
+	spritesheet:setFilter( 'nearest', 'nearest' )
 	
-	local width = sprite:getWidth()
-	local height = sprite:getHeight()
+	local width = spritesheet:getWidth()
+	local height = spritesheet:getHeight()
+
 	local quadwidth = width/xquads
 	local quadheight = height/yquads
+	
+	local offset = {x = quadwidth/2, y = quadheight/2}
+
 	local size = zoom
 	local quadgrid = {}
-	local row = _row or 1
+	
+	local row = 1
 	local col = 1
+	
 	local updateframes = 6
 	local tick = 0
 	local state = { action='still', direction='left' }
@@ -54,7 +60,6 @@ function Sprite( self, element, file, xquads, yquads, _row )
 	function self:getWidth()
 		return width
 	end
-	
 	-- gets sprite's height
 	function self:getHeight()
 		return height
@@ -64,10 +69,19 @@ function Sprite( self, element, file, xquads, yquads, _row )
 	function self:getQuadWidth()
 		return width/xquads
 	end
-	
 	-- gets quads' height
 	function self:getQuadHeight()
 		return height/yquads
+	end
+
+	-- gets render offset
+	function self:getOffset()
+		return offset
+	end
+	-- sets render offset
+	function self:setOffset( x, y )
+		offset.x = x
+		offset.y = y
 	end
 	
 	-- gets rendering size
@@ -112,7 +126,7 @@ function Sprite( self, element, file, xquads, yquads, _row )
 	-- render method
 	function self:render()
 		local pos = getRenderPos()
-		love.graphics.draw(sprite, quadgrid[row][col], pos.x, pos.y, 0, size, size, quadwidth/2, quadheight-(8*size))
+		love.graphics.draw(spritesheet, quadgrid[row][col], pos.x, pos.y, 0, size, size, offset.x, offset.y)
 	end
 
 	generateQuads()

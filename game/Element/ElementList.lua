@@ -6,7 +6,7 @@ function ElementList( self )
 	
 	local elist = {}
 
-	local function newPlayer()
+	local function newPlayer(x, y, xq, qy, offsetx, offsety)
 
 		local element = Element({}, 'player')
 
@@ -20,6 +20,9 @@ function ElementList( self )
 
 		-- create sprite property
 		local sprite = Sprite( {}, element, 'avatar', 4, 4 )
+		if offsetx and offsety then
+			sprite:setOffset(offsetx,offsety)
+		end
 		-- add sprite events: MovementInput, ...
 		sprite:addEvent( Sprite_MovementInput({}, sprite) )
 		-- add sprite to element
@@ -41,7 +44,7 @@ function ElementList( self )
 		return element
 	end
 
-	local function newNPC(name)
+	local function newNPC(name, x, y, xq, qy, offsetx, offsety)
 
 		local element = Element({}, name)
 
@@ -54,6 +57,9 @@ function ElementList( self )
 
 		-- create sprite property
 		local sprite = Sprite ( {}, element, name or 'NPC', 1, 1 )
+		if offsetx and offsety then
+			sprite:setOffset(offsetx,offsety)
+		end
 		-- add sprite to element
 		element:addProperty( sprite )
 
@@ -71,17 +77,17 @@ function ElementList( self )
 		return elist
 	end
 
-	function self:newElement( type, name )
+	function self:newElement( type, name, x, y, xq, qy, offsetx, offsety )
 		local element
 		if type == 'player' then
-			element = newPlayer()
+			element = newPlayer(x, y, xq, qy, offsetx, offsety)
 			self:addElement(element)
 		end
 		if type == 'camera' then
 			element = newCamera()
 		end
 		if type == 'npc' then
-			element = newNPC(name)
+			element = newNPC(name, x, y, xq, qy, offsetx, offsety)
 			self:addElement(element)
 		end
 		return element

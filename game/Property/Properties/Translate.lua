@@ -9,11 +9,12 @@ function Translate(self, element)
 
 	-- local variables
 	local x, y = 0, 0 --not world position, but render position
-	local playerheight = elements:getElement('player'):getAttribute('Sprite', 'QuadHeight')
+	local player = elements:getElement('player')
+	local playerheight_offset = player:getAttribute('Sprite', 'Offset').y
 
 	-- local methods
 	local function constructor()
-		local pos = elements:getElement('player'):getAttribute('Body', 'Pos')
+		local pos = player:getAttribute('Body', 'Pos')
 		element:setAttribute('Body', 'Pos', pos.x, pos.y)
 	end
 
@@ -36,7 +37,7 @@ function Translate(self, element)
 
 	function self:render()
 		--love.graphics.push()
-		love.graphics.translate( -x +window:getWidth()/2, -y + window:getHeight()/2 + playerheight - 8*zoom)
+		love.graphics.translate( -x +window:getWidth()/2, -y + window:getHeight()/2 + playerheight_offset)
 		--love.graphics.pop()
 	end
 
