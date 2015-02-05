@@ -10,6 +10,9 @@ function Element( self, name )
 	function self:getId()
 		return id
 	end
+	function self:isElement()
+		return true
+	end
 
 	-- public property methods
 	function self:getProperty(propertyname)

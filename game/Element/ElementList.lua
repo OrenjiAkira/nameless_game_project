@@ -62,13 +62,12 @@ function ElementList( self )
 
 	function self:addElement(element)
 		local name = element:getId()
-		print(name)
 		elist[name] = element
 	end
 	function self:getElement(elementname)
 		return elist[elementname]
 	end
-	function self:getElist()
+	function self:getElementList()
 		return elist
 	end
 
@@ -76,14 +75,15 @@ function ElementList( self )
 		local element
 		if type == 'player' then
 			element = newPlayer()
+			self:addElement(element)
 		end
 		if type == 'camera' then
 			element = newCamera()
 		end
 		if type == 'npc' then
 			element = newNPC(name)
+			self:addElement(element)
 		end
-		self:addElement(element)
 		return element
 	end
 

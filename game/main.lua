@@ -54,14 +54,12 @@ function love.update( dt )
 		input:update()
 		camera:update()
 
-		for _,element in pairs(elements) do
-			if isTable(element) then
-				if element:getProperty('Body') then
-					element:getProperty('Body'):update()
-				end
-				if element:getProperty('Sprite') then
-					element:getProperty('Sprite'):update()
-				end
+		for _,element in pairs( elements:getElementList() ) do
+			if element:getProperty('Body') then
+				element:getProperty('Body'):update()
+			end
+			if element:getProperty('Sprite') then
+				element:getProperty('Sprite'):update()
 			end
 		end
 	end
@@ -73,11 +71,9 @@ function love.draw()
 
 	camera:render()
 	
-	for _,element in pairs(elements) do
-		if isTable(element) then
-			if element:getProperty('Sprite') then
-				element:getProperty('Sprite'):render()
-			end
+	for _,element in pairs( elements:getElementList() ) do
+		if element:getProperty('Sprite') then
+			element:getProperty('Sprite'):render()
 		end
 	end
 end
@@ -87,10 +83,3 @@ function love.keypressed(key)
 		love.event.quit()
 	end
 end
-
-function isTable(t)
-	if type(t) == 'table' then return true else return false end
-end
-
-
-
