@@ -9,18 +9,17 @@ function Translate(self, element)
 
 	-- local variables
 	local x, y = 0, 0 --not world position, but render position
-	local playerheight = elements['player']:getProperty('Sprite'):getQuadHeight()
+	local playerheight = elements['player']:getAttribute('Sprite', 'QuadHeight')
 
 	-- local methods
 	local function constructor( ... )
-		local pos = elements['player']:getProperty('Position'):getPos()
-		element:getProperty('Position'):setPos(pos.x, pos.y)
+		local pos = elements['player']:getAttribute('Body', 'Pos')
+		element:setAttribute('Body', 'Pos', pos.x, pos.y)
 	end
 
 	-- public methods
 	function self:setTranslate(ax,ay)
-		element:getProperty('Position'):setPos(ax,ay)
-		-- set min or max to hitbox in the future
+		element:setAttribute('Body', 'Pos', ax, ay)
 		x = ax*unit
 		y = ay*unit
 	end
@@ -31,7 +30,7 @@ function Translate(self, element)
 
 	-- update methods
 	function self:update()
-		local pos = element:getProperty('Position'):getPos()
+		local pos = element:getAttribute('Body', 'Pos')
 		self:setTranslate( pos.x, pos.y )
 	end
 

@@ -1,22 +1,32 @@
--- Movement --
+-- Body --
 
--- only works on elements with position
 
-function Movement( self, element )
+
+function Body( self, element )
 	Property(self)
 
-	self:setName('Movement')
+	self:setName('Body')
 
+	local pos = { x, y }
 	local speed = 0
 	local acc = 0.1
 	local speedlimit = 0.4
 	local direction
 
+	-- gets position
+	function self:getPos()
+		return pos
+	end
+	-- sets position
+	function self:setPos( x, y )
+		pos.x = x
+		pos.y = y
+	end
+
 	-- gets speed
 	function self:getSpeed()
 		return speed
 	end
-	
 	-- sets speed
 	function self:setSpeed(newspeed)
 		speed = newspeed
@@ -26,7 +36,6 @@ function Movement( self, element )
 	function self:getAcceleration()
 		return acc
 	end
-	
 	-- sets acceleration
 	function self:setAcceleration(newacc)
 		acc = newacc
@@ -36,7 +45,6 @@ function Movement( self, element )
 	function self:getSpeedLimit()
 		return speedlimit
 	end
-	
 	-- sets speedlimit
 	function self:setSpeedLimit(newlimit)
 		speedlimit = newlimit
@@ -45,24 +53,33 @@ function Movement( self, element )
 	-- private action methods
 	function self:move(dir)
 		direction = dir
-		speed = speed + acc
-		if speed > speedlimit then speed = speedlimit end
+		self:setSpeed(speed + acc)
+		if speed > speedlimit then self:setSpeed(speedlimit) end
 	end
 	function self:stop()
-		speed = speed - acc
-		if speed < 0 then speed = 0 end
+		self:setSpeed(speed - acc)
+		if speed < 0 then self:setSpeed(0) end
 	end
 
 	-- update method
 	function self:update()
+
 		self:updateEvents()
+
 		if direction and speed > 0 then
-			local pos = element:getProperty('Position'):getPos()
+			-- current position
+			local oldx = self:getPos().x
+			local oldy = self:getPos().y
+
+			-- displacement
 			local dx = speed*math.cos(direction)
 			local dy = speed*math.sin(direction)
-			local x = dx + pos.x
-	    local y = dy + pos.y
-	    element:getProperty('Position'):setPos( x, y )
+
+			-- new position
+			local x = dx + oldx
+	    local y = dy + oldy
+
+	    self:setPos( x, y )
 	  end
 	end
 

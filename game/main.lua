@@ -8,14 +8,13 @@ require 'Element/Elements/Camera'
 require 'Property/Property'
 require 'Property/Properties/Sprite'
 require 'Property/Properties/HitBox'
-require 'Property/Properties/Position'
-require 'Property/Properties/Movement'
+require 'Property/Properties/Body'
 require 'Property/Properties/Translate'
 
 require 'Event/Event'
-require 'Event/Events/SpriteInput'
-require 'Event/Events/MovementInput'
-require 'Event/Events/MovementCollision'
+require 'Event/Events/Sprite_MovementInput'
+require 'Event/Events/Body_MovementInput'
+require 'Event/Events/Body_Collision'
 
 local dtotal = 0
 local fps = 1/30
@@ -34,8 +33,8 @@ function love.load()
 	
 	local player = newElement('player')
 	local jeff = newElement('npc', 'jeff')
-	player:getProperty('Position'):setPos( 48, 32 )
-	jeff:getProperty('Position'):setPos( 24, 32 )
+	player:getProperty('Body'):setPos( 48, 32 )
+	jeff:getProperty('Body'):setPos( 24, 32 )
 
 	elements[jeff:getId()] = jeff
 	elements[player:getId()] = player
@@ -51,11 +50,12 @@ function love.update( dt )
 
 		-- do things here
 
+		input:update()
 		camera:update()
 
 		for _,element in pairs(elements) do
-			if element:getProperty('Movement') then
-				element:getProperty('Movement'):update()
+			if element:getProperty('Body') then
+				element:getProperty('Body'):update()
 			end
 			if element:getProperty('Sprite') then
 				element:getProperty('Sprite'):update()
@@ -89,18 +89,17 @@ function newElement( type, name )
 	if type == 'player' then
 		
 		-- adding properties
-		element:addProperty( Position ( {}, element ) )
 		element:addProperty( HitBox ( {}, element ) )
 		local sprite = Sprite( {}, element, 'avatar', 4, 4 )
-		local movement = Movement( {}, element )
+		local body = Body( {}, element )
 
-		sprite:addEvent( SpriteInput({}, sprite) )
+		sprite:addEvent( Sprite_MovementInput({}, sprite) )
 
-		movement:addEvent( MovementInput({}, movement) )
-		movement:addEvent( MovementCollision({}, movement) )
+		body:addEvent( Body_MovementInput({}, body) )
+		body:addEvent( Body_Collision({}, body) )
 
 		element:addProperty( sprite )
-		element:addProperty( movement )
+		element:addProperty( body )
 
 		-- setting properties
 		local w = element:getAttribute( 'Sprite', 'QuadWidth' )
@@ -111,10 +110,9 @@ function newElement( type, name )
 	end
 	if type == 'npc' then
 		
-		element:addProperty( Position ( {}, element ) )
 		element:addProperty( Sprite ( {}, element, name or type, 1, 1 ) )
 		element:addProperty( HitBox ( {}, element ) )
-		element:addProperty( Movement ( {}, element ) )
+		element:addProperty( Body ( {}, element ) )
 
 	end
 	if type == 'camera' then

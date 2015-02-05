@@ -1,12 +1,12 @@
 -- Movement Input --
 
--- from Movement Property
 
-function MovementInput( self, movement )
+
+function Body_MovementInput( self, body )
 	Event(self)
 
 	local function constructor()
-		self:setName('MovementInput')
+		self:setName('Body_MovementInput')
 	end
 
 	-- calculate movement polar coordinate
@@ -40,9 +40,9 @@ function MovementInput( self, movement )
 		local angle = self:getAngle()
 		
 		if angle then
-			movement:move(angle)
+			body:move(angle)
 		else
-			movement:stop()
+			body:stop()
 		end
 	end
 

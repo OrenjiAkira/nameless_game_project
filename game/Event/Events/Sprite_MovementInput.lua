@@ -2,11 +2,11 @@
 
 
 
-function SpriteInput( self, sprite )
+function Sprite_MovementInput( self, sprite )
 	Event(self, sprite)
 
 	local function constructor()
-		self:setName('SpriteInput')
+		self:setName('Sprite_MovementInput')
 	end
 
 	-- set the state of movement animation

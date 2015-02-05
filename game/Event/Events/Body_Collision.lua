@@ -1,12 +1,12 @@
 -- Movement Collision --
 
--- movement event
 
-function MovementCollision( self, movement )
+
+function Body_Collision( self, movement )
 	Event(self, movement)
 
 	local function constructor()
-		self:setName('MovementCollision')
+		self:setName('Collision')
 	end
 
 	constructor()

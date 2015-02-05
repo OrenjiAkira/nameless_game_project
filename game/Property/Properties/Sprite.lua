@@ -34,7 +34,7 @@ function Sprite( self, element, file, xquads, yquads, _row )
 
 	-- transform world position in render position
 	local function getRenderPos()
-		local pos = element:getProperty('Position'):getPos()
+		local pos = element:getAttribute('Body', 'Pos')
 		local renderpos = {x,y}
 		renderpos.x = pos.x*unit
 		renderpos.y = pos.y*unit

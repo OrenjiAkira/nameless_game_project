@@ -4,6 +4,9 @@
 
 function input(self)
 
+	local frametimer = 0
+	local timer = 0
+
 	-- Input for directionals
 	function self:isMoving()
 
@@ -52,6 +55,26 @@ function input(self)
 		else
 			return false
 		end
+	end
+
+	function self:isIdle()
+		if not self:isMoving() then
+			frametimer = frametimer + 1
+			if frametimer == 30 then
+				frametimer = 0
+				timer = timer + 1
+			end
+			return true
+		else
+			frametimer = 0
+			timer = 0
+			return false
+		end
+	end
+
+	function self:update()
+		self:isIdle()
+		--print('Total time idle is: '..timer..'s and '..frametimer..'frames.')
 	end
 
 	return self
