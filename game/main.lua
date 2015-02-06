@@ -58,6 +58,7 @@ function love.update( dt )
 
 		for _,element in pairs( elements:getElementList() ) do
 			if element:getProperty('Body') then
+				print(element:getId())
 				element:getProperty('Body'):update()
 			end
 			if element:getProperty('Sprite') then

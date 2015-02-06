@@ -17,6 +17,7 @@ function Property( self )
 
 	-- public event methods
 	function self:getEvent(eventname)
+		print('getting event ' .. eventname)
 		return events[eventname]
 	end
 	function self:addEvent(event)

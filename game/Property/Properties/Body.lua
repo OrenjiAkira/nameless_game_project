@@ -83,7 +83,10 @@ function Body( self, element )
 	-- update method
 	function self:update()
 
-		self:updateEvents()
+		movementInput = self:getEvent('Body_MovementInput')
+		if movementInput then
+			self:getEvent('Body_MovementInput'):update()
+		end
 
 		if direction and speed > 0 then
 			-- current position
@@ -94,9 +97,13 @@ function Body( self, element )
 			local dx = speed*math.cos(direction)
 			local dy = speed*math.sin(direction)
 
+			local shouldImove = self:getEvent('Body_Collision'):update(oldx+dx,oldy+dy)
+
 			-- new position
-			local x = dx + oldx
-	    local y = dy + oldy
+			if shouldImove then
+				local x = dx + oldx
+		    local y = dy + oldy
+		  end
 
 	    self:setPos( x, y )
 	  end
