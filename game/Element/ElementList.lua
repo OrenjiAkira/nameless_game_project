@@ -14,7 +14,7 @@ function ElementList( self )
 		local body = Body( {}, element )
 		-- add body events: MovementInput, Collision, ...
 		body:addEvent( Body_MovementInput({}, body) )
-		body:addEvent( Body_Collision({}, body) )
+		body:addEvent( Body_Collision({}, body, element) )
 		-- add body to element
 		element:addProperty( body )
 
@@ -36,7 +36,7 @@ function ElementList( self )
 
 		local body = Body({}, element )
 		body:addEvent( Body_MovementInput({}, body ) )
-		body:addEvent( Body_Collision({}, body ) )
+		body:addEvent( Body_Collision({}, body, element ) )
 		element:addProperty( body )
 
 		element:addProperty( Translate({}, element ) )
@@ -51,7 +51,7 @@ function ElementList( self )
 		-- create body property
 		local body = Body( {}, element )
 		-- add body events: Collision, ...
-		body:addEvent( Body_Collision({}, body) )
+		body:addEvent( Body_Collision({}, body, element) )
 		-- add body to element
 		element:addProperty( body )
 

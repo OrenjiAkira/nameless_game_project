@@ -12,13 +12,17 @@ function Body_Collision( self, body, element )
 	local function checkCollision( present, future, hitbox )
 		local halfwidth = body:getWidth()/2
 		local halfheight = body:getHeight()/2
-		if math.max(present.x-halfwidth, future.x+hitbox.halfwidth) == future.x+hitbox.halfwidth then
+		if present.x-halfwidth < future.x+hitbox.halfwidth then
+			print('collinding left!')
 			return true
-		elseif math.min(present.x+halfwidth, future.x-hitbox.halfwidth) == future.x-hitbox.halfwidth then
+		elseif present.x+halfwidth > future.x-hitbox.halfwidth then
+			print('collinding right!')
 			return true
 		elseif math.max(present.y-halfheight, future.y+hitbox.halfheight) == future.y+hitbox.halfheight then
+			print('collinding up!')
 			return true
 		elseif math.min(present.y+halfheight, future.y-hitbox.halfheight) == future.y-hitbox.halfheight then
+			print('collinding down!')
 			return true
 		end
 	end
