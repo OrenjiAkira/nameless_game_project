@@ -101,7 +101,6 @@ function Body( self, element )
 			local shouldImove = self:getEvent('Body_Collision'):update( element, oldx+dx, oldy+dy )
 
 			-- new position
-			print(shouldImove)
 			if shouldImove then
 				x = dx + oldx
 		    y = dy + oldy

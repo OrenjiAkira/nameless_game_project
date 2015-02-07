@@ -9,16 +9,16 @@ function Body_Collision( self, body )
 		self:setName('Body_Collision')
 	end
 
-	local function checkCollision( element, nextx, nexty, otherelement )
+	local function checkCollision( nextx, nexty, otherelement )
 		local this = {
 			nextpos = { x = nextx, y = nexty },
 			hitbox = { width = body:getWidth(), height = body:getHeight() }
 		}
 		local that = {
-			pos = otherelement:getPos(),
+			pos = otherelement:getAttribute('Body', 'Pos'),
 			hitbox = { width = otherelement:getAttribute( 'Body', 'Width'), height = otherelement:getAttribute( 'Body', 'Height') }
 		}
-		if element:getId() == 'camera' or otherelement:getId() == 'camera' then
+		if otherelement:getId() == 'camera' then
 			return false
 		end
 		
@@ -26,6 +26,8 @@ function Body_Collision( self, body )
 			this.nextpos.x + this.hitbox.width/2 < that.pos.x - that.hitbox.width/2 or
 			this.nextpos.y - this.hitbox.height/2 > that.pos.y + that.hitbox.height/2 or
 			this.nextpos.y + this.hitbox.height/2 < that.pos.y - that.hitbox.height/2 then
+			print('this is', this.nextpos.x, this.nextpos.y)
+			print('that is', that.pos.x, that.pos.y)
 			return true
 		else
 			return false
@@ -36,12 +38,13 @@ function Body_Collision( self, body )
 		local comparelist = elements:getElementList()
 		for _,otherelement in pairs(comparelist) do
 
-			print(element:getId(), otherelement:getId())
-			if not element:getId() == otherelement:getId() then
-				if checkCollision( element, nextx, nexty, otherelement ) then
+			if element:getId() ~= otherelement:getId() then
+				print(element:getId(), otherelement:getId())
+				if checkCollision( nextx, nexty, otherelement ) then
 					print('collision is true')
 					return false
 				else
+					print('collision is false')
 					return true
 				end
 			end

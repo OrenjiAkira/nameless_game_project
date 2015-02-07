@@ -39,6 +39,8 @@ function ElementList( self )
 		local body = Body({}, element )
 		body:addEvent( Body_MovementInput({}, body ) )
 		body:addEvent( Body_Collision({}, body ) )
+		body:setWidth(80)
+		body:setHeight(45)
 		element:addProperty( body )
 
 		element:addProperty( Translate({}, element ) )
