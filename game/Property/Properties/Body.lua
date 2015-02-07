@@ -85,7 +85,6 @@ function Body( self, element )
 
 		movementInput = self:getEvent('Body_MovementInput')
 		if movementInput then
-			print(element:getId())
 			self:getEvent('Body_MovementInput'):update()
 		end
 
@@ -99,9 +98,10 @@ function Body( self, element )
 			local dx = speed*math.cos(direction)
 			local dy = speed*math.sin(direction)
 
-			local shouldImove = self:getEvent('Body_Collision'):update( oldx+dx, oldy+dy )
+			local shouldImove = self:getEvent('Body_Collision'):update( element, oldx+dx, oldy+dy )
 
 			-- new position
+			print(shouldImove)
 			if shouldImove then
 				x = dx + oldx
 		    y = dy + oldy
@@ -109,7 +109,6 @@ function Body( self, element )
 		  	x = oldx
 		    y = oldy
 		  end
-		  print(element:getId(),x,y)
 	    self:setPos( x, y )
 	  end
 	end
