@@ -26,11 +26,13 @@ function Body_Collision( self, body )
 			this.nextpos.x + this.hitbox.width/2 < that.pos.x - that.hitbox.width/2 or
 			this.nextpos.y - this.hitbox.height/2 > that.pos.y + that.hitbox.height/2 or
 			this.nextpos.y + this.hitbox.height/2 < that.pos.y - that.hitbox.height/2 then
-			print('this is', this.nextpos.x, this.nextpos.y)
-			print('that is', that.pos.x, that.pos.y)
-			return true
-		else
+			print(this.nextpos.x - this.hitbox.width/2, that.pos.x + that.hitbox.width/2)
+			print(this.nextpos.x + this.hitbox.width/2, that.pos.x - that.hitbox.width/2)
+			print(this.nextpos.y - this.hitbox.height/2, that.pos.y + that.hitbox.height/2)
+			print(this.nextpos.y + this.hitbox.height/2, that.pos.y - that.hitbox.height/2)
 			return false
+		else
+			return true
 		end
 	end
 
@@ -38,7 +40,7 @@ function Body_Collision( self, body )
 		local comparelist = elements:getElementList()
 		for _,otherelement in pairs(comparelist) do
 
-			if element:getId() ~= otherelement:getId() then
+			if element:getId() ~= otherelement:getId() and otherelement:getProperty('Body') then
 				print(element:getId(), otherelement:getId())
 				if checkCollision( nextx, nexty, otherelement ) then
 					print('collision is true')

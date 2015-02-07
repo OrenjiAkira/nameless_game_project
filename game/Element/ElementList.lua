@@ -15,8 +15,8 @@ function ElementList( self )
 		-- add body events: MovementInput, Collision, ...
 		body:addEvent( Body_MovementInput({}, body) )
 		body:addEvent( Body_Collision({}, body ) )
-		body:setWidth(2.5)
-		body:setHeight(1)
+		body:setWidth(3*zoom)
+		body:setHeight(1*zoom)
 		-- add body to element
 		element:addProperty( body )
 
@@ -56,8 +56,8 @@ function ElementList( self )
 		local body = Body( {}, element )
 		-- add body events: Collision, ...
 		body:addEvent( Body_Collision({}, body ) )
-		body:setWidth(2.5)
-		body:setHeight(1)
+		body:setWidth(3*zoom)
+		body:setHeight(1*zoom)
 		-- add body to element
 		element:addProperty( body )
 
