@@ -69,6 +69,15 @@ function Body( self, element )
 		speedlimit = newlimit
 	end
 
+	-- gets speed
+	function self:getDirection()
+		return direction
+	end
+	-- sets speed
+	function self:setDirection(newdir)
+		direction = newdir
+	end
+
 	-- private action methods
 	function self:move(dir)
 		direction = dir
@@ -83,9 +92,10 @@ function Body( self, element )
 	-- update method
 	function self:update()
 
-		movementInput = self:getEvent('Body_MovementInput')
-		if movementInput then
-			self:getEvent('Body_MovementInput'):update()
+		-- update input
+		movementinput = self:getEvent('Body_MovementInput')
+		if movementinput then
+			movementinput:update()
 		end
 
 		if direction and speed > 0 then
@@ -98,16 +108,22 @@ function Body( self, element )
 			local dx = speed*math.cos(direction)
 			local dy = speed*math.sin(direction)
 
-			local shouldImove = self:getEvent('Body_Collision'):update( element, oldx+dx, oldy+dy )
+			if self:getEvent('Body_Collision') then
+				local shouldImove = self:getEvent('Body_Collision'):update( element, oldx+dx, oldy+dy )
 
-			-- new position
-			if shouldImove then
+				-- new position
+				if shouldImove then
+					x = dx + oldx
+			    y = dy + oldy
+			  else
+			  	x = oldx
+			    y = oldy
+			  end
+			else
 				x = dx + oldx
 		    y = dy + oldy
-		  else
-		  	x = oldx
-		    y = oldy
 		  end
+		  
 	    self:setPos( x, y )
 	  end
 	end

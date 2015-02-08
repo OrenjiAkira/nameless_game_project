@@ -5,6 +5,11 @@
 function ElementList( self )
 	
 	local elist = {}
+	local latest = 0
+
+	local function increaseList()
+		latest = latest + 1
+	end
 
 	local function newPlayer(x, y, xq, qy, offsetx, offsety)
 
@@ -72,15 +77,28 @@ function ElementList( self )
 		return element
 	end
 
-	function self:addElement(element)
-		local name = element:getId()
-		elist[name] = element
-	end
-	function self:getElement(elementname)
-		return elist[elementname]
-	end
+	-- public methods
 	function self:getElementList()
 		return elist
+	end
+
+	function self:getElementListSize()
+		return latest
+	end
+
+	function self:getElement(elementname)
+		for _,element in pairs(elist) do
+			if element:getId() == elementname then
+				return element
+			end
+		end
+		print('Could not find element')
+	end
+
+	function self:addElement(element)
+		increaseList()
+		elist[latest] = element
+		print('added element '..element:getId())
 	end
 
 	function self:newElement( type, name, x, y, xq, qy, offsetx, offsety )
@@ -91,6 +109,7 @@ function ElementList( self )
 		end
 		if type == 'camera' then
 			element = newCamera()
+			self:addElement(element)
 		end
 		if type == 'npc' then
 			element = newNPC(name, x, y, xq, qy, offsetx, offsety)

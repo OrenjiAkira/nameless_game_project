@@ -56,12 +56,17 @@ function love.update( dt )
 		input:update()
 		camera:update()
 
-		for _,element in pairs( elements:getElementList() ) do
-			if element:getProperty('Body') then
-				element:getProperty('Body'):update()
-			end
-			if element:getProperty('Sprite') then
-				element:getProperty('Sprite'):update()
+		local listsize = elements:getElementListSize()
+		local elementlist = elements:getElementList()
+		for i=1,listsize do
+			local element = elementlist[i]
+			if element:getId() ~= 'camera' then
+				if element:getProperty('Body') then
+					element:getProperty('Body'):update()
+				end
+				if element:getProperty('Sprite') then
+					element:getProperty('Sprite'):update()
+				end
 			end
 		end
 	end
@@ -73,8 +78,25 @@ function love.draw()
 
 	camera:render()
 	
-	for _,element in pairs( elements:getElementList() ) do
+	local listsize = elements:getElementListSize()
+	local elementlist = elements:getElementList()	
+	for i=1,listsize do
+		local element = elementlist[i]
 		if element:getProperty('Sprite') then
+
+			-- draw hitbox
+			local bodypos = element:getAttribute('Body', 'Pos')
+			local bodysize = { width = element:getAttribute('Body', 'Width'), height = element:getAttribute('Body', 'Height') }
+			love.graphics.setColor(255,255,255,100)
+			love.graphics.rectangle(
+				'fill',
+				bodypos.x*unit-bodysize.width*unit/2,
+				bodypos.y*unit-bodysize.height*unit/2,
+				bodysize.width*unit,
+				bodysize.height*unit
+			)
+
+			love.graphics.setColor(255,255,255,255)
 			element:getProperty('Sprite'):render()
 		end
 	end

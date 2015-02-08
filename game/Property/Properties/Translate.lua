@@ -32,6 +32,7 @@ function Translate(self, element)
 	-- update methods
 	function self:update()
 		local pos = element:getAttribute('Body', 'Pos')
+		print(element:getAttribute('Body', 'Speed') )
 		self:setTranslate( pos.x, pos.y )
 	end
 

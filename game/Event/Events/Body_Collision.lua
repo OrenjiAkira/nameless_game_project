@@ -3,7 +3,7 @@
 
 
 function Body_Collision( self, body )
-	Event(self, movement)
+	Event(self)
 
 	local function constructor()
 		self:setName('Body_Collision')
@@ -19,6 +19,7 @@ function Body_Collision( self, body )
 			hitbox = { width = otherelement:getAttribute( 'Body', 'Width'), height = otherelement:getAttribute( 'Body', 'Height') }
 		}
 		if otherelement:getId() == 'camera' then
+			print('camera false collision')
 			return false
 		end
 		
@@ -26,10 +27,6 @@ function Body_Collision( self, body )
 			this.nextpos.x + this.hitbox.width/2 < that.pos.x - that.hitbox.width/2 or
 			this.nextpos.y - this.hitbox.height/2 > that.pos.y + that.hitbox.height/2 or
 			this.nextpos.y + this.hitbox.height/2 < that.pos.y - that.hitbox.height/2 then
-			print(this.nextpos.x - this.hitbox.width/2, that.pos.x + that.hitbox.width/2)
-			print(this.nextpos.x + this.hitbox.width/2, that.pos.x - that.hitbox.width/2)
-			print(this.nextpos.y - this.hitbox.height/2, that.pos.y + that.hitbox.height/2)
-			print(this.nextpos.y + this.hitbox.height/2, that.pos.y - that.hitbox.height/2)
 			return false
 		else
 			return true
@@ -43,10 +40,8 @@ function Body_Collision( self, body )
 			if element:getId() ~= otherelement:getId() and otherelement:getProperty('Body') then
 				print(element:getId(), otherelement:getId())
 				if checkCollision( nextx, nexty, otherelement ) then
-					print('collision is true')
 					return false
 				else
-					print('collision is false')
 					return true
 				end
 			end
