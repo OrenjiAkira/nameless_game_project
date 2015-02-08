@@ -10,7 +10,7 @@ function Body( self, element )
 	local width
 	local height
 	local pos = Vector2D()
-	local speed = 0 --Vector2D( 0, 0 )
+	local speed = 0
 	local acc = 0.1
 	local speedlimit = 0.4
 	local direction
