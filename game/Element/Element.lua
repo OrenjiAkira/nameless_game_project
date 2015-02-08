@@ -43,6 +43,11 @@ function Element( self, name )
 		property['set'..attribute]( property, ... )
 	end
 
+	function self:update()
+	end
+	function self:render()
+	end
+
 	return self
 end
 

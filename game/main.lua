@@ -1,5 +1,8 @@
 -- Main --
 
+
+require 'libs/Vector'
+
 require 'input'
 
 require 'Element/Element'
@@ -24,6 +27,7 @@ local camera = {}
 -- global tables
 input = input( {} )
 elements = ElementList( {} )
+hudthings = ElementList( {} )
 
 -- global values
 unit = 16
@@ -35,14 +39,14 @@ function love.load()
 	love.graphics.setBackgroundColor(0, 0, 0)
 	
 	local player = elements:newElement('player')
-	player:setAttribute('Body', 'Pos', 16, 0)
+	player:setAttribute('Body', 'Pos', 16, 8)
 	player:setAttribute('Sprite', 'Offset', 32, 113)
 
 	local jeff = elements:newElement('npc', 'jeff')
 	jeff:setAttribute('Body', 'Pos', 8, 0)
 	jeff:setAttribute('Sprite', 'Offset', 64, 124)
 
-	camera = elements:newElement('camera')
+	camera = hudthings:newElement('camera')
 
 end
 
@@ -54,37 +58,23 @@ function love.update( dt )
 		-- do things here
 
 		input:update()
-		camera:update()
 
-		local listsize = elements:getElementListSize()
-		local elementlist = elements:getElementList()
-		for i=1,listsize do
-			local element = elementlist[i]
-			if element:getId() ~= 'camera' then
-				if element:getProperty('Body') then
-					element:getProperty('Body'):update()
-				end
-				if element:getProperty('Sprite') then
-					element:getProperty('Sprite'):update()
-				end
-			end
-		end
+		hudthings:update()
+		elements:update()
+		
 	end
 end
 
 function love.draw()
-	
-	-- render things
 
-	camera:render()
+	hudthings:render()
 	
+	-- draw hitbox
 	local listsize = elements:getElementListSize()
 	local elementlist = elements:getElementList()	
-	for i=1,listsize do
-		local element = elementlist[i]
+	for _,element in ipairs(elementlist) do
 		if element:getProperty('Sprite') then
 
-			-- draw hitbox
 			local bodypos = element:getAttribute('Body', 'Pos')
 			local bodysize = { width = element:getAttribute('Body', 'Width'), height = element:getAttribute('Body', 'Height') }
 			love.graphics.setColor(255,255,255,100)
@@ -95,11 +85,12 @@ function love.draw()
 				bodysize.width*unit,
 				bodysize.height*unit
 			)
-
-			love.graphics.setColor(255,255,255,255)
-			element:getProperty('Sprite'):render()
 		end
 	end
+	
+	-- render things
+	elements:render()
+
 end
 
 function love.keypressed(key)

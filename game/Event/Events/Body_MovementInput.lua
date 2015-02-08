@@ -12,23 +12,23 @@ function Body_MovementInput( self, body )
 	-- calculate movement polar coordinate
 	function self:getAngle()
 		local angle
-		local vector = { x = 0, y = 0 }
+		local v = Vector2D()
 		local move = input:isMoving()
 
 		if move then
 			if move.l then
-				vector.x = -1
+				v.x = -1
 			end
 			if move.r then
-				vector.x = 1
+				v.x = 1
 			end
 			if move.u then
-				vector.y = -1
+				v.y = -1
 			end
 			if move.d then
-				vector.y = 1
+				v.y = 1
 			end
-			angle = math.atan2(vector.y, vector.x)
+			angle = math.atan2(v.y, v.x)
 			return angle
 		else
 			return

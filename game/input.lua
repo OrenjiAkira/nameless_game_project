@@ -1,7 +1,5 @@
 -- Input --
 
-
-
 function input(self)
 
 	local frametimer = 0

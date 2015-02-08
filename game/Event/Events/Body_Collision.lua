@@ -2,44 +2,52 @@
 
 
 
-function Body_Collision( self, body )
+function Body_Collision( self, body, elementlist )
 	Event(self)
 
 	local function constructor()
 		self:setName('Body_Collision')
 	end
 
-	local function checkCollision( nextx, nexty, otherelement )
+	local function checkCollision( next_coordinate, axis, otherelement )
 		local this = {
-			nextpos = { x = nextx, y = nexty },
-			hitbox = { width = body:getWidth(), height = body:getHeight() }
+			nextpos = { x, y },
+			hitbox = {
+				width = body:getWidth()/2,
+				height = body:getHeight()/2
+			}
 		}
+		if axis == 'x' then
+			this.nextpos.x = next_coordinate
+			this.nextpos.y = body:getPos().y
+		elseif axis == 'y' then
+			this.nextpos.x = body:getPos().x
+			this.nextpos.y = next_coordinate
+		end
 		local that = {
 			pos = otherelement:getAttribute('Body', 'Pos'),
-			hitbox = { width = otherelement:getAttribute( 'Body', 'Width'), height = otherelement:getAttribute( 'Body', 'Height') }
+			hitbox = {
+				width = otherelement:getAttribute( 'Body', 'Width')/2,
+				height = otherelement:getAttribute( 'Body', 'Height')/2
+			}
 		}
-		if otherelement:getId() == 'camera' then
-			print('camera false collision')
-			return false
-		end
-		
-		if this.nextpos.x - this.hitbox.width/2 > that.pos.x + that.hitbox.width/2 or
-			this.nextpos.x + this.hitbox.width/2 < that.pos.x - that.hitbox.width/2 or
-			this.nextpos.y - this.hitbox.height/2 > that.pos.y + that.hitbox.height/2 or
-			this.nextpos.y + this.hitbox.height/2 < that.pos.y - that.hitbox.height/2 then
+		if this.nextpos.x - this.hitbox.width > that.pos.x + that.hitbox.width or
+			this.nextpos.x + this.hitbox.width < that.pos.x - that.hitbox.width or
+			this.nextpos.y - this.hitbox.height > that.pos.y + that.hitbox.height or
+			this.nextpos.y + this.hitbox.height < that.pos.y - that.hitbox.height then
 			return false
 		else
 			return true
 		end
 	end
 
-	function self:update( element, nextx, nexty )
-		local comparelist = elements:getElementList()
-		for _,otherelement in pairs(comparelist) do
+	function self:update( element, next_coordinate, axis )
+		local comparelist = elementlist:getElementList()
+		for _,otherelement in ipairs(comparelist) do
 
 			if element:getId() ~= otherelement:getId() and otherelement:getProperty('Body') then
 				print(element:getId(), otherelement:getId())
-				if checkCollision( nextx, nexty, otherelement ) then
+				if checkCollision( next_coordinate, axis, otherelement ) then
 					return false
 				else
 					return true

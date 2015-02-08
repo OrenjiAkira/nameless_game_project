@@ -9,8 +9,8 @@ function Body( self, element )
 
 	local width
 	local height
-	local pos = { x, y }
-	local speed = 0
+	local pos = Vector2D()
+	local speed = 0 --Vector2D( 0, 0 )
 	local acc = 0.1
 	local speedlimit = 0.4
 	local direction
@@ -38,8 +38,7 @@ function Body( self, element )
 	end
 	-- sets position
 	function self:setPos( x, y )
-		pos.x = x
-		pos.y = y
+		pos:set( x, y )
 	end
 
 	-- gets speed
@@ -47,7 +46,7 @@ function Body( self, element )
 		return speed
 	end
 	-- sets speed
-	function self:setSpeed(newspeed)
+	function self:setSpeed( newspeed )
 		speed = newspeed
 	end
 
@@ -69,25 +68,40 @@ function Body( self, element )
 		speedlimit = newlimit
 	end
 
-	-- gets speed
+	-- gets direction
 	function self:getDirection()
 		return direction
 	end
-	-- sets speed
+	-- sets direction
 	function self:setDirection(newdir)
 		direction = newdir
 	end
 
-	-- private action methods
+	-- public action methods
 	function self:move(dir)
-		direction = dir
-		self:setSpeed(speed + acc)
-		if speed > speedlimit then self:setSpeed(speedlimit) end
+		self:setDirection(dir)
+		speed = speed + acc
+		if speed > speedlimit then speed = speedlimit end
 	end
+
 	function self:stop()
-		self:setSpeed(speed - acc)
-		if speed < 0 then self:setSpeed(0) end
+		speed = speed - acc
+		if speed < 0 then speed = 0 end
 	end
+
+
+	-- update Collision
+	local function verifyCollision( old_coordinate, new_coordinate, axis )
+
+		local shouldImove = self:getEvent('Body_Collision'):update( element, new_coordinate, axis )
+		
+		if shouldImove then
+			return new_coordinate
+	  else
+	  	return old_coordinate
+	  end
+	end
+
 
 	-- update method
 	function self:update()
@@ -99,34 +113,28 @@ function Body( self, element )
 		end
 
 		if direction and speed > 0 then
+			--print(speed.x, speed.y)
 			-- current position
-			local oldx = self:getPos().x
-			local oldy = self:getPos().y
+			local oldx = pos.x
+			local oldy = pos.y
 			local x, y
 
 			-- displacement
 			local dx = speed*math.cos(direction)
 			local dy = speed*math.sin(direction)
 
-			if self:getEvent('Body_Collision') then
-				local shouldImove = self:getEvent('Body_Collision'):update( element, oldx+dx, oldy+dy )
-
-				-- new position
-				if shouldImove then
-					x = dx + oldx
-			    y = dy + oldy
-			  else
-			  	x = oldx
-			    y = oldy
-			  end
-			else
-				x = dx + oldx
-		    y = dy + oldy
+		  if self:getEvent('Body_Collision') then
+		  	x = verifyCollision(oldx, oldx+dx, 'x')
+		  	y = verifyCollision(oldy, oldy+dy, 'y')
+		  else
+		  	x = oldx + dx
+		  	y = oldy + dy
 		  end
-		  
+
 	    self:setPos( x, y )
 	  end
 	end
 
 	return self
 end
+	
