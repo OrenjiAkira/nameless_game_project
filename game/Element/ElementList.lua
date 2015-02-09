@@ -22,6 +22,7 @@ function ElementList( self )
 		body:addEvent( Body_Collision({}, body, self ) )
 		body:setWidth(3*zoom)
 		body:setHeight(1*zoom)
+		body:setInvertedHitbox(false)
 		-- add body to element
 		element:addProperty( body )
 
@@ -46,6 +47,7 @@ function ElementList( self )
 		body:addEvent( Body_Collision({}, body, self ) )
 		body:setWidth(80)
 		body:setHeight(45)
+		body:setInvertedHitbox(true)
 		element:addProperty( body )
 
 		element:addProperty( Translate({}, element ) )
@@ -63,6 +65,7 @@ function ElementList( self )
 		body:addEvent( Body_Collision({}, body, self ) )
 		body:setWidth(3*zoom)
 		body:setHeight(1*zoom)
+		body:setInvertedHitbox(false)
 		-- add body to element
 		element:addProperty( body )
 

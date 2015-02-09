@@ -23,6 +23,8 @@ function Body_Collision( self, body, elementlist )
 		elseif axis == 'y' then
 			this.nextpos.x = body:getPos().x
 			this.nextpos.y = next_coordinate
+		elseif axis == 'both' then
+			this.nextpos = next_coordinate
 		end
 		local that = {
 			pos = otherelement:getAttribute('Body', 'Pos'),
@@ -35,9 +37,19 @@ function Body_Collision( self, body, elementlist )
 			this.nextpos.x + this.hitbox.width < that.pos.x - that.hitbox.width or
 			this.nextpos.y - this.hitbox.height > that.pos.y + that.hitbox.height or
 			this.nextpos.y + this.hitbox.height < that.pos.y - that.hitbox.height then
-			return false
+			-- not colliding
+			if not body:getInvertedHitbox() then
+				return false
+			else
+				return true
+			end
 		else
-			return true
+			-- yes colliding
+			if not body:getInvertedHitbox() then
+				return true
+			else
+				return false
+			end
 		end
 	end
 
@@ -48,9 +60,9 @@ function Body_Collision( self, body, elementlist )
 			if element:getId() ~= otherelement:getId() and otherelement:getProperty('Body') then
 				print(element:getId(), otherelement:getId())
 				if checkCollision( next_coordinate, axis, otherelement ) then
-					return false
-				else
 					return true
+				else
+					return false
 				end
 			end
 		end

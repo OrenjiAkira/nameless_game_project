@@ -14,6 +14,7 @@ function Body( self, element )
 	local acc = 0.1
 	local speedlimit = 0.4
 	local direction
+	local invertedhitbox
 
 	-- gets width
 	function self:getWidth()
@@ -77,6 +78,15 @@ function Body( self, element )
 		direction = newdir
 	end
 
+	-- if hitbox is inverted
+	function self:getInvertedHitbox()
+		return invertedhitbox
+	end
+	-- set hitbox's inversion
+	function self:setInvertedHitbox(isInverted)
+		invertedhitbox = isInverted
+	end
+
 	-- public action methods
 	function self:move(dir)
 		self:setDirection(dir)
@@ -93,12 +103,12 @@ function Body( self, element )
 	-- update Collision
 	local function verifyCollision( old_coordinate, new_coordinate, axis )
 
-		local shouldImove = self:getEvent('Body_Collision'):update( element, new_coordinate, axis )
+		local isColliding = self:getEvent('Body_Collision'):update( element, new_coordinate, axis )
 		
-		if shouldImove then
-			return new_coordinate
-	  else
+		if isColliding then
 	  	return old_coordinate
+	  else
+			return new_coordinate
 	  end
 	end
 
