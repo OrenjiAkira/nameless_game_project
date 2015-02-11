@@ -38,12 +38,10 @@ function love.load()
 	window = love.graphics.newCanvas(1280,720)
 	love.graphics.setBackgroundColor(0, 0, 0)
 	
-	local player = elements:newElement('player')
-	player:setAttribute('Body', 'Pos', 16, 8)
+	local player = elements:newElement('player', 'player', 16, 8, 3, 1)
 	player:setAttribute('Sprite', 'Offset', 32, 113)
 
-	local jeff = elements:newElement('npc', 'jeff')
-	jeff:setAttribute('Body', 'Pos', 8, 0)
+	local jeff = elements:newElement('npc', 'jeff', 8, 0, 3, 1)
 	jeff:setAttribute('Sprite', 'Offset', 64, 124)
 
 	camera = hudthings:newElement('camera')
@@ -66,7 +64,7 @@ function love.update( dt )
 end
 
 function love.draw()
-
+	love.graphics.scale(zoom)
 	hudthings:render()
 	
 	-- draw hitbox

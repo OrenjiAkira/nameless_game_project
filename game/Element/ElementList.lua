@@ -11,30 +11,21 @@ function ElementList( self )
 		latest = latest + 1
 	end
 
-	local function newPlayer(x, y, xq, qy, offsetx, offsety)
+	local function newPlayer(x, y, xq, yq)
 
 		local element = Element({}, 'player')
 
 		-- create body property
-		local body = Body( {}, element )
-		-- add body events: MovementInput, Collision, ...
+		local body = Body( {}, element, Vector2D( x, y ), xq, yq, false, true )
 		body:addEvent( Body_MovementInput({}, body) )
 		body:addEvent( Body_Collision({}, body, self ) )
-		body:setWidth(3*zoom)
-		body:setHeight(1*zoom)
-		body:setInvertedHitbox(false)
-		-- add body to element
 		element:addProperty( body )
 
 		-- create sprite property
 		local sprite = Sprite( {}, element, 'avatar', 4, 4 )
-		if offsetx and offsety then
-			sprite:setOffset(offsetx,offsety)
-		end
-		-- add sprite events: MovementInput, ...
 		sprite:addEvent( Sprite_MovementInput({}, sprite) )
-		-- add sprite to element
 		element:addProperty( sprite )
+
 		return element
 	end
 
@@ -42,12 +33,9 @@ function ElementList( self )
 
 		local element = Camera({}, 'camera')
 
-		local body = Body({}, element )
+		local body = Body({}, element, nil, 80, 45, true, true )
 		body:addEvent( Body_MovementInput({}, body ) )
 		body:addEvent( Body_Collision({}, body, self ) )
-		body:setWidth(80)
-		body:setHeight(45)
-		body:setInvertedHitbox(true)
 		element:addProperty( body )
 
 		element:addProperty( Translate({}, element ) )
@@ -55,26 +43,17 @@ function ElementList( self )
 		return element
 	end
 
-	local function newNPC(name, x, y, xq, qy, offsetx, offsety)
+	local function newNPC(name, x, y, xq, yq)
 
 		local element = Element({}, name)
 
 		-- create body property
-		local body = Body( {}, element )
-		-- add body events: Collision, ...
+		local body = Body( {}, element, Vector2D( x, y ), xq, yq, false, true )
 		body:addEvent( Body_Collision({}, body, self ) )
-		body:setWidth(3*zoom)
-		body:setHeight(1*zoom)
-		body:setInvertedHitbox(false)
-		-- add body to element
 		element:addProperty( body )
 
 		-- create sprite property
 		local sprite = Sprite ( {}, element, name or 'NPC', 1, 1 )
-		if offsetx and offsety then
-			sprite:setOffset(offsetx,offsety)
-		end
-		-- add sprite to element
 		element:addProperty( sprite )
 
 		return element
@@ -104,10 +83,10 @@ function ElementList( self )
 		print('added element '..element:getId())
 	end
 
-	function self:newElement( type, name, x, y, xq, qy, offsetx, offsety )
+	function self:newElement( type, name, x, y, xq, yq )
 		local element
 		if type == 'player' then
-			element = newPlayer(x, y, xq, qy, offsetx, offsety)
+			element = newPlayer(x, y, xq, yq)
 			self:addElement(element)
 		end
 		if type == 'camera' then
@@ -115,7 +94,7 @@ function ElementList( self )
 			self:addElement(element)
 		end
 		if type == 'npc' then
-			element = newNPC(name, x, y, xq, qy, offsetx, offsety)
+			element = newNPC(name, x, y, xq, yq)
 			self:addElement(element)
 		end
 		return element

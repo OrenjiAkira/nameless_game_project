@@ -2,19 +2,21 @@
 
 
 
-function Body( self, element )
+function Body( self, element, _pos, _width, _height, _invertedhitbox, _collidable )
 	Property(self)
 
 	self:setName('Body')
 
-	local width
-	local height
-	local pos = Vector2D()
+	local width = _width
+	local height = _height
+	local pos = _pos or Vector2D()
 	local speed = 0
-	local acc = 0.1
-	local speedlimit = 0.4
+	local acc = 0.5
+	local speedlimit = 0.2
 	local direction
-	local invertedhitbox
+	local invertedhitbox = _invertedhitbox
+	local collidable = _collidable
+	print(width, height, pos.x, pos.y)
 
 	-- gets width
 	function self:getWidth()
@@ -87,6 +89,15 @@ function Body( self, element )
 		invertedhitbox = isInverted
 	end
 
+	-- gets collidable
+	function self:getSpeed()
+		return collidable
+	end
+	-- sets collidable
+	function self:setSpeed( collide )
+		collidable = collide
+	end
+
 	-- public action methods
 	function self:move(dir)
 		self:setDirection(dir)
@@ -134,8 +145,13 @@ function Body( self, element )
 			local dy = speed*math.sin(direction)
 
 		  if self:getEvent('Body_Collision') then
-		  	x = verifyCollision(oldx, oldx+dx, 'x')
-		  	y = verifyCollision(oldy, oldy+dy, 'y')
+		  	if collidable then
+			  	x = verifyCollision(oldx, oldx+dx, 'x')
+			  	y = verifyCollision(oldy, oldy+dy, 'y')
+			  else
+			  	x = oldx + dx
+		  		y = oldy + dy
+				end
 		  else
 		  	x = oldx + dx
 		  	y = oldy + dy

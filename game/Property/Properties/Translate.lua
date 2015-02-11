@@ -45,7 +45,7 @@ function Translate(self, element)
 
 	function self:render()
 		--love.graphics.push()
-		love.graphics.translate( -x +window:getWidth()/2, -y + window:getHeight()/2 + playerheight_offset)
+		love.graphics.translate( -x +window:getWidth()/(2*zoom), -y + window:getHeight()/(2*zoom) + playerheight_offset/zoom)
 		--love.graphics.pop()
 	end
 

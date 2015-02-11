@@ -126,7 +126,7 @@ function Sprite( self, element, file, xquads, yquads )
 	-- render method
 	function self:render()
 		local pos = getRenderPos()
-		love.graphics.draw(spritesheet, quadgrid[row][col], pos.x, pos.y, 0, size, size, offset.x, offset.y)
+		love.graphics.draw(spritesheet, quadgrid[row][col], pos.x, pos.y, 0, 1, 1, offset.x, offset.y)
 	end
 
 	generateQuads()
