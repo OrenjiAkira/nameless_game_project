@@ -45,18 +45,21 @@ function ElementList( self )
 
 	local function newNPC(name, x, y, xq, yq)
 
-		local element = Element({}, name)
+		local element, interaction = Element({}, name), Element({}, name..'_interaction')
 
 		-- create body property
 		local body = Body( {}, element, Vector2D( x, y ), xq, yq, false, true )
+		local ibody = Body( {}, element, Vector2D( x, y ), xq*1.5, yq*1.5, false, false )
 		body:addEvent( Body_Collision({}, body, self ) )
+		ibody:addEvent( Body_Collision({}, ibody, self ) )
 		element:addProperty( body )
+		interaction:addProperty( ibody )
 
 		-- create sprite property
 		local sprite = Sprite ( {}, element, name or 'NPC', 1, 1 )
 		element:addProperty( sprite )
 
-		return element
+		return element, interaction
 	end
 
 	-- public methods
@@ -94,8 +97,10 @@ function ElementList( self )
 			self:addElement(element)
 		end
 		if type == 'npc' then
-			element = newNPC(name, x, y, xq, yq)
+			local interaction
+			element, interaction = newNPC(name, x, y, xq, yq)
 			self:addElement(element)
+			self:addElement(interaction)
 		end
 		return element
 	end

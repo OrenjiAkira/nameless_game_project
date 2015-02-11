@@ -90,11 +90,11 @@ function Body( self, element, _pos, _width, _height, _invertedhitbox, _collidabl
 	end
 
 	-- gets collidable
-	function self:getSpeed()
+	function self:getCollidable()
 		return collidable
 	end
 	-- sets collidable
-	function self:setSpeed( collide )
+	function self:setCollidable( collide )
 		collidable = collide
 	end
 
@@ -145,13 +145,8 @@ function Body( self, element, _pos, _width, _height, _invertedhitbox, _collidabl
 			local dy = speed*math.sin(direction)
 
 		  if self:getEvent('Body_Collision') then
-		  	if collidable then
-			  	x = verifyCollision(oldx, oldx+dx, 'x')
-			  	y = verifyCollision(oldy, oldy+dy, 'y')
-			  else
-			  	x = oldx + dx
-		  		y = oldy + dy
-				end
+		  	x = verifyCollision(oldx, oldx+dx, 'x')
+		  	y = verifyCollision(oldy, oldy+dy, 'y')
 		  else
 		  	x = oldx + dx
 		  	y = oldy + dy

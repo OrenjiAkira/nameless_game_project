@@ -71,7 +71,7 @@ function love.draw()
 	local listsize = elements:getElementListSize()
 	local elementlist = elements:getElementList()	
 	for _,element in ipairs(elementlist) do
-		if element:getProperty('Sprite') then
+		--if element:getProperty('Sprite') then
 
 			local bodypos = element:getAttribute('Body', 'Pos')
 			local bodysize = { width = element:getAttribute('Body', 'Width'), height = element:getAttribute('Body', 'Height') }
@@ -83,7 +83,7 @@ function love.draw()
 				bodysize.width*unit,
 				bodysize.height*unit
 			)
-		end
+		--end
 	end
 	
 	-- render things
