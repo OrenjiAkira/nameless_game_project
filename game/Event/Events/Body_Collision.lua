@@ -55,17 +55,20 @@ function Body_Collision( self, body, elementlist )
 
 	function self:update( element, next_coordinate, axis )
 		local comparelist = elementlist:getElementList()
+		local returnmessage = {collision=false, uncollidablelements = {}}
 		for _,otherelement in ipairs(comparelist) do
 
 			if element:getId() ~= otherelement:getId() and otherelement:getProperty('Body') then
 				print(element:getId(), otherelement:getId())
-				if checkCollision( next_coordinate, axis, otherelement ) then
-					return true
-				else
-					return false
+				if otherelement:getAttribute('Body', 'Collidable') == false then
+					table.insert(returnmessage.uncollidablelements, otherelement)
+				end
+				if checkCollision( next_coordinate, axis, otherelement ) and otherelement:getAttribute('Body', 'Collidable') then
+					returnmessage.collision = true
 				end
 			end
 		end
+		return returnmessage
 	end
 
 	constructor()

@@ -68,7 +68,6 @@ function love.draw()
 	hudthings:render()
 	
 	-- draw hitbox
-	local listsize = elements:getElementListSize()
 	local elementlist = elements:getElementList()	
 	for _,element in ipairs(elementlist) do
 		--if element:getProperty('Sprite') then

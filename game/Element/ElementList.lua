@@ -5,11 +5,7 @@
 function ElementList( self )
 	
 	local elist = {}
-	local latest = 0
 
-	local function increaseList()
-		latest = latest + 1
-	end
 
 	local function newPlayer(x, y, xq, yq)
 
@@ -49,7 +45,7 @@ function ElementList( self )
 
 		-- create body property
 		local body = Body( {}, element, Vector2D( x, y ), xq, yq, false, true )
-		local ibody = Body( {}, element, Vector2D( x, y ), xq*1.5, yq*1.5, false, false )
+		local ibody = Body( {}, element, Vector2D( x, y ), xq*1.5, yq*2.5, false, false )
 		body:addEvent( Body_Collision({}, body, self ) )
 		ibody:addEvent( Body_Collision({}, ibody, self ) )
 		element:addProperty( body )
@@ -67,10 +63,6 @@ function ElementList( self )
 		return elist
 	end
 
-	function self:getElementListSize()
-		return latest
-	end
-
 	function self:getElement(elementname)
 		for _,element in pairs(elist) do
 			if element:getId() == elementname then
@@ -81,8 +73,7 @@ function ElementList( self )
 	end
 
 	function self:addElement(element)
-		increaseList()
-		elist[latest] = element
+		table.insert(elist, element)
 		print('added element '..element:getId())
 	end
 

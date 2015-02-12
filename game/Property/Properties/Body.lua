@@ -116,7 +116,7 @@ function Body( self, element, _pos, _width, _height, _invertedhitbox, _collidabl
 
 		local isColliding = self:getEvent('Body_Collision'):update( element, new_coordinate, axis )
 		
-		if isColliding then
+		if isColliding.collision then
 	  	return old_coordinate
 	  else
 			return new_coordinate
