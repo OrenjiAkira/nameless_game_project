@@ -4,6 +4,9 @@ function input(self)
 
 	local frametimer = 0
 	local timer = 0
+	local interaction = false
+	local directional_input = {u,r,d,l}
+	local interaction_input = {maru, batsu}
 
 	-- Input for directionals
 	function self:isMoving()
@@ -13,12 +16,10 @@ function input(self)
 		local up = love.keyboard.isDown('up')
 		local down = love.keyboard.isDown('down')
 
-		directional_input = {
-			u = up,
-			r = right,
-			d = down,
-			l = left
-		}
+		directional_input.u = up
+		directional_input.d = down
+		directional_input.l = left
+		directional_input.r = right
 
 		if left and right then
 			
@@ -47,20 +48,33 @@ function input(self)
 			end
 
 		elseif left or right or up or down then
-
 			return directional_input
+		else
+			return false
+		end
+	end
 
+	function self:isInteracting()
+		local maru = love.keyboard.isDown(' ', 'return', 'z')
+		local batsu = love.keyboard.isDown('escape', 'x')
+
+		interaction_input.maru = maru
+		interaction_input.batsu = batsu
+
+		if maru or batsu then
+			return interaction_input
 		else
 			return false
 		end
 	end
 
 	function self:isIdle()
-		if not self:isMoving() then
+		if not self:isMoving() and not self:isInteracting() then
 			frametimer = frametimer + 1
 			if frametimer == 30 then
 				frametimer = 0
 				timer = timer + 1
+				print('Idle for '..timer..' seconds.')
 			end
 			return true
 		else

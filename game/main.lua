@@ -90,8 +90,8 @@ function love.draw()
 
 end
 
-function love.keypressed(key)
-	if key == 'escape' then
+function love.keyreleased(key)
+	if key == 'backspace' then
 		love.event.quit()
 	end
 end

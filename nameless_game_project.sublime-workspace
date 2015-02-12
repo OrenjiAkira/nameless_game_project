@@ -4,8 +4,56 @@
 		"selected_items":
 		[
 			[
+				"in",
+				"interaction_input"
+			],
+			[
+				"is",
+				"isDown"
+			],
+			[
+				"co",
+				"collision"
+			],
+			[
+				"retu",
+				"returnmessage"
+			],
+			[
+				"a",
+				"addProperty"
+			],
+			[
+				"dir",
+				"direction"
+			],
+			[
 				"s",
-				"shouldImove"
+				"sqrmod"
+			],
+			[
+				"sq",
+				"sqrn"
+			],
+			[
+				"El",
+				"ElementList"
+			],
+			[
+				"get",
+				"getElementList"
+			],
+			[
+				"elem",
+				"elements"
+			],
+			[
+				"move",
+				"movementinput"
+			],
+			[
+				"d",
+				"direction"
 			],
 			[
 				"of",
@@ -14,14 +62,6 @@
 			[
 				"y",
 				"y"
-			],
-			[
-				"is",
-				"isIdle"
-			],
-			[
-				"move",
-				"movement"
 			],
 			[
 				"Mov",
@@ -70,10 +110,6 @@
 			[
 				"pos",
 				"Position"
-			],
-			[
-				"get",
-				"getProperty"
 			],
 			[
 				"pro",
@@ -256,34 +292,18 @@
 	"buffers":
 	[
 		{
+			"file": "game/input.lua",
+			"settings":
+			{
+				"buffer_size": 1861,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "game/main.lua",
 			"settings":
 			{
-				"buffer_size": 1754,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "game/Event/Events/Body_Collision.lua",
-			"settings":
-			{
-				"buffer_size": 1542,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "game/Element/ElementList.lua",
-			"settings":
-			{
-				"buffer_size": 2369,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "game/Property/Properties/Body.lua",
-			"settings":
-			{
-				"buffer_size": 2025,
+				"buffer_size": 2007,
 				"line_ending": "Windows"
 			}
 		}
@@ -318,7 +338,6 @@
 		"/C/Akira/Other Media/game projects/nameless_game_project",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/assets",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/assets/sprites",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Event",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Event/Events",
@@ -328,17 +347,18 @@
 	"file_history":
 	[
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element/ElementList.lua",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Sprite.lua",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Translate.lua",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element/Element.lua",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Body.lua",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Position.lua",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/input.lua",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element/Elements/Camera.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/main.lua",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Event/Events/Sprite_MovementInput.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/input.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Body.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Event/Events/Body_Collision.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Translate.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Sprite.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/libs/Vector.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Event/Events/Body_MovementInput.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element/Element.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element/Elements/Camera.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Position.lua",
+		"/C/Akira/Other Media/game projects/nameless_game_project/game/Event/Events/Sprite_MovementInput.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Event/Event.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Event/Events/MovementInput.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties/Movement.lua",
@@ -422,6 +442,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"listsize",
+			"collide",
+			"zoom",
+			"yq",
+			"zoom",
+			"size",
+			"zoom",
+			"input",
+			"self",
+			"size",
 			"element:getId() == otherelement:getId()",
 			"sprite",
 			"Movement",
@@ -527,6 +557,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"self",
+			"input",
 			"Translate",
 			"y",
 			"x",
@@ -566,77 +598,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "game/main.lua",
+					"file": "game/input.lua",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1754,
+						"buffer_size": 1861,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								864,
-								864
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 324.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "game/Event/Events/Body_Collision.lua",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1542,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1019,
-								1019
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 216.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "game/Element/ElementList.lua",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2369,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1042,
-								1042
+								1763,
+								1763
 							]
 						],
 						"settings":
@@ -645,27 +619,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": -0.0,
-						"translation.y": 432.0,
+						"translation.y": 864.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "game/Property/Properties/Body.lua",
+					"buffer": 1,
+					"file": "game/main.lua",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2025,
+						"buffer_size": 2007,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1863,
-								1863
+								1972,
+								1972
 							]
 						],
 						"settings":
@@ -673,8 +647,8 @@
 							"syntax": "Packages/Lua/Lua.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 1404.0,
+						"translation.x": -0.0,
+						"translation.y": 1026.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -725,7 +699,7 @@
 	"project": "nameless_game_project.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
