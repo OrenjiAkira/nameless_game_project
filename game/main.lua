@@ -7,7 +7,7 @@ require 'input'
 
 require 'Element/Element'
 require 'Element/ElementList'
-require 'Element/Elements/Camera'
+--require 'Element/Elements/Camera'
 
 require 'Property/Property'
 require 'Property/Properties/Sprite'
