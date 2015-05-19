@@ -44,8 +44,24 @@ function Element( self, name )
 	end
 
 	function self:update()
+		if element:getProperty('Body') then
+			self:getProperty('Body'):update()
+		end
+		if self:getProperty('Sprite') then
+			self:getProperty('Sprite'):update()
+		end
+		if self:getProperty('Translate') then
+			self:getProperty('Translate'):update()
+		end
 	end
 	function self:render()
+		if self:getProperty('Sprite') then
+			love.graphics.setColor(255,255,255,255) --normalising color
+			self:getProperty('Sprite'):render()
+		end
+		if self:getProperty('Translate') then
+			self:getProperty('Translate'):render()
+		end
 	end
 
 	return self

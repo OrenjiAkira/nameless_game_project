@@ -100,22 +100,13 @@ function ElementList( self )
 	function self:update()
 		for _,element in ipairs(elist) do
 			element:update()
-			if element:getProperty('Body') then
-				element:getProperty('Body'):update()
-			end
-			if element:getProperty('Sprite') then
-				element:getProperty('Sprite'):update()
-			end
 		end
 		table.sort(
 			elist,
 			function(a,b)
-				return ( 
-					a:getAttribute('Body', 'Pos').y +
-					a:getAttribute('Body', 'Height')/2 <
-					b:getAttribute('Body', 'Pos').y -
-					b:getAttribute('Body', 'Height')/2
-				)
+				a_bottom = a:getAttribute('Body', 'Pos').y + a:getAttribute('Body', 'Height')/2
+				b_top = b:getAttribute('Body', 'Pos').y - b:getAttribute('Body', 'Height')/2
+				return ( a_bottom < b_top )
 			end
 		)
 	end
@@ -123,10 +114,6 @@ function ElementList( self )
 	function self:render()
 		for _,element in ipairs(elist) do
 			element:render()
-			if element:getProperty('Sprite') then
-				love.graphics.setColor(255,255,255,255)
-				element:getProperty('Sprite'):render()
-			end
 		end
 	end
 
