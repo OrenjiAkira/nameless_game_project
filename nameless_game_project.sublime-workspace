@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"b",
+				"b_top"
+			],
+			[
 				"in",
 				"interaction_input"
 			],
@@ -292,26 +296,47 @@
 	"buffers":
 	[
 		{
-			"file": "game/input.lua",
+			"file": "game/main.lua",
 			"settings":
 			{
-				"buffer_size": 1861,
+				"buffer_size": 2009,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "game/main.lua",
+			"file": "game/Element/ElementList.lua",
 			"settings":
 			{
-				"buffer_size": 2007,
+				"buffer_size": 2832,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "game/Element/Element.lua",
+			"settings":
+			{
+				"buffer_size": 1527,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "game/Property/Properties/Sprite.lua",
+			"settings":
+			{
+				"buffer_size": 2710,
 				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "Love2D",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -335,17 +360,17 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Akira/Other Media/game projects/nameless_game_project",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/assets",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Event",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Event/Events",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property",
-		"/C/Akira/Other Media/game projects/nameless_game_project/game/Property/Properties"
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Element",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Event",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Property",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Property/Properties"
 	],
 	"file_history":
 	[
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/Element/Element.lua",
+		"/C/Users/8010041/Documents/GitHub/nameless_game_project/game/input.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/Element/ElementList.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/main.lua",
 		"/C/Akira/Other Media/game projects/nameless_game_project/game/input.lua",
@@ -598,19 +623,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "game/input.lua",
+					"file": "game/main.lua",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1861,
+						"buffer_size": 2009,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1763,
-								1763
+								111,
+								111
 							]
 						],
 						"settings":
@@ -618,8 +643,8 @@
 							"syntax": "Packages/Lua/Lua.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
-						"translation.y": 864.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -627,19 +652,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "game/main.lua",
+					"file": "game/Element/ElementList.lua",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2007,
+						"buffer_size": 2832,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1972,
-								1972
+								46,
+								46
 							]
 						],
 						"settings":
@@ -647,11 +672,69 @@
 							"syntax": "Packages/Lua/Lua.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
-						"translation.y": 1026.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "game/Element/Element.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1527,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1369,
+								1369
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 234.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "game/Property/Properties/Sprite.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2710,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2571,
+								2571
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1190.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -696,6 +779,7 @@
 	{
 		"height": 0.0
 	},
+	"pinned_build_system": "",
 	"project": "nameless_game_project.sublime-project",
 	"replace":
 	{
@@ -705,6 +789,7 @@
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -713,6 +798,7 @@
 	"select_project":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -721,6 +807,7 @@
 	"select_symbol":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],

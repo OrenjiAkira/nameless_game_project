@@ -218,3 +218,4 @@ pip-log.txt
 #sublime project files
 *.sublime-workspace
 nameless_game_project.sublime-workspace
+*.sublime-workspace
