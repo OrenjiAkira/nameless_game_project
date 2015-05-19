@@ -44,7 +44,7 @@ function Element( self, name )
 	end
 
 	function self:update()
-		if element:getProperty('Body') then
+		if self:getProperty('Body') then
 			self:getProperty('Body'):update()
 		end
 		if self:getProperty('Sprite') then

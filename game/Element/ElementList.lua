@@ -27,7 +27,7 @@ function ElementList( self )
 
 	local function newCamera()
 
-		local element = Camera({}, 'camera')
+		local element = Element({}, 'camera')
 
 		local body = Body({}, element, nil, 80, 45, true, true )
 		body:addEvent( Body_MovementInput({}, body ) )
