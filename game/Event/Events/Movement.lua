@@ -1,19 +1,15 @@
--- Movement Input --
+-- Movement --
 
-
-
-function Body_MovementInput( self, body )
+function Movement( self, move, element )
 	Event(self)
 
-	local function constructor()
-		self:setName('Body_MovementInput')
-	end
+	local body = element:getProperty('Body')
 
 	-- calculate movement polar coordinate
 	function self:getAngle()
 		local angle
 		local v = Vector2D()
-		local move = input:getMovement()
+		--local move = input:getMovement()
 
 		if move then
 			if move.l then
@@ -36,7 +32,7 @@ function Body_MovementInput( self, body )
 	end
 	
 	-- update method
-	function self:update()
+	function self:happen()
 		local angle = self:getAngle()
 		
 		if angle then
@@ -46,6 +42,5 @@ function Body_MovementInput( self, body )
 		end
 	end
 
-	constructor()
 	return self
 end

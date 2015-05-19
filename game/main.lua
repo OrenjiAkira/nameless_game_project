@@ -4,6 +4,7 @@
 require 'libs/Vector'
 
 require 'input'
+require 'input_manager'
 
 require 'Element/Element'
 require 'Element/ElementList'
@@ -14,6 +15,8 @@ require 'Property/Properties/Body'
 require 'Property/Properties/Translate'
 
 require 'Event/Event'
+require 'Event/Event_Manager'
+require 'Event/Events/Movement'
 require 'Event/Events/Sprite_MovementInput'
 require 'Event/Events/Body_MovementInput'
 require 'Event/Events/Body_Collision'
@@ -24,7 +27,6 @@ local fps = 1/30
 local camera = {}
 
 -- global tables
-input = input( {} )
 elements = ElementList( {} )
 hudthings = ElementList( {} )
 
@@ -44,6 +46,8 @@ function love.load()
 	jeff:setAttribute('Sprite', 'Offset', 64, 124)
 
 	camera = hudthings:newElement('camera')
+	eventmgr = event_manager( {} )
+	inputmgr = input_manager( {} )
 
 end
 
@@ -54,7 +58,8 @@ function love.update( dt )
 
 		-- do things here
 
-		input:update()
+		inputmgr:update()
+		eventmgr:update()
 
 		hudthings:update()
 		elements:update()
@@ -93,4 +98,8 @@ function love.keyreleased(key)
 	if key == 'backspace' then
 		love.event.quit()
 	end
+end
+
+function queryEvent( event )
+	eventmgr:addEvent(event)
 end

@@ -71,22 +71,13 @@ function Body( self, element, _pos, _width, _height, _invertedhitbox, _collidabl
 		speedlimit = newlimit
 	end
 
-	-- gets direction
-	function self:getDirection()
-		return direction
-	end
-	-- sets direction
-	function self:setDirection(newdir)
-		direction = newdir
-	end
-
 	-- if hitbox is inverted
 	function self:getInvertedHitbox()
 		return invertedhitbox
 	end
 	-- set hitbox's inversion
-	function self:setInvertedHitbox(isInverted)
-		invertedhitbox = isInverted
+	function self:setInvertedHitbox( invert )
+		invertedhitbox = invert
 	end
 
 	-- gets collidable
@@ -98,9 +89,14 @@ function Body( self, element, _pos, _width, _height, _invertedhitbox, _collidabl
 		collidable = collide
 	end
 
+	-- sets direction, local only
+	local function setDirection(newdir)
+		direction = newdir
+	end
+
 	-- public action methods
 	function self:move(dir)
-		self:setDirection(dir)
+		setDirection(dir)
 		speed = speed + acc
 		if speed > speedlimit then speed = speedlimit end
 	end
@@ -128,10 +124,12 @@ function Body( self, element, _pos, _width, _height, _invertedhitbox, _collidabl
 	function self:update()
 
 		-- update input
+		--[[
 		movementinput = self:getEvent('Body_MovementInput')
 		if movementinput then
 			movementinput:update()
 		end
+		]]
 
 		if direction and speed > 0 then
 			--print(speed.x, speed.y)

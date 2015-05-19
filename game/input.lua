@@ -9,7 +9,7 @@ function input(self)
 	local interaction_input = {maru, batsu}
 
 	-- Input for directionals
-	function self:isMoving()
+	function self:getMovement()
 
 		local left = love.keyboard.isDown('left')
 		local right = love.keyboard.isDown('right')
@@ -54,7 +54,7 @@ function input(self)
 		end
 	end
 
-	function self:isInteracting()
+	function self:getInteraction()
 		local maru = love.keyboard.isDown(' ', 'return', 'z')
 		local batsu = love.keyboard.isDown('escape', 'x')
 
@@ -69,7 +69,7 @@ function input(self)
 	end
 
 	function self:isIdle()
-		if not self:isMoving() and not self:isInteracting() then
+		if not self:getMovement() and not self:getInteraction() then
 			frametimer = frametimer + 1
 			if frametimer == 30 then
 				frametimer = 0
@@ -86,7 +86,6 @@ function input(self)
 
 	function self:update()
 		self:isIdle()
-		--print('Total time idle is: '..timer..'s and '..frametimer..'frames.')
 	end
 
 	return self

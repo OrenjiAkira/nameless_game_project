@@ -11,7 +11,7 @@ function Sprite_MovementInput( self, sprite )
 
 	-- set the state of movement animation
 	local function InputState()
-		local move = input:isMoving()
+		local move = input:getMovement()
 
 		if move then
 			if move.l then

@@ -102,7 +102,7 @@ function Sprite( self, element, file, xquads, yquads )
 	
 	-- update method
 	function self:update()
-		self:updateEvents()
+		--self:updateEvents()
 		if state.action == 'still' then
 			col = 1
 			if state.direction == 'left' then
