@@ -56,7 +56,6 @@ function Element( self, name )
 	end
 	function self:render()
 		if self:getProperty('Sprite') then
-			love.graphics.setColor(255,255,255,255) --normalising color
 			self:getProperty('Sprite'):render()
 		end
 		if self:getProperty('Translate') then

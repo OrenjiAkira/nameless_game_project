@@ -126,6 +126,7 @@ function Sprite( self, element, file, xquads, yquads )
 	-- render method
 	function self:render()
 		local pos = getRenderPos()
+		love.graphics.setColor(255,255,255,255) --normalising color
 		love.graphics.draw(spritesheet, quadgrid[row][col], pos.x, pos.y, 0, 1, 1, offset.x, offset.y)
 	end
 
