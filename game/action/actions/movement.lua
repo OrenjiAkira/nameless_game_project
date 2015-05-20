@@ -1,7 +1,7 @@
 -- Movement --
 
-function Movement( self, move, element )
-	Event(self)
+function movement( self, move, element )
+	action(self)
 
 	local body = element:getProperty('Body')
 	local sprite = element:getProperty('Sprite')

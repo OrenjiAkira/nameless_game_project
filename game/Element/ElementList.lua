@@ -12,8 +12,7 @@ function ElementList( self )
 		local element = Element({}, 'player')
 
 		-- create body property
-		local body = Body( {}, element, Vector2D( x, y ), xq, yq, false, true )
-		body:addEvent( Body_Collision({}, body, self ) )
+		local body = Body( {}, element, self, Vector2D( x, y ), xq, yq, false, true )
 		element:addProperty( body )
 
 		-- create sprite property
@@ -27,8 +26,7 @@ function ElementList( self )
 
 		local element = Element({}, 'camera')
 
-		local body = Body({}, element, nil, 80, 45, true, true )
-		body:addEvent( Body_Collision({}, body, self ) )
+		local body = Body({}, element, self, nil, 80, 45, true, true )
 		element:addProperty( body )
 
 		element:addProperty( Translate({}, element ) )
@@ -41,11 +39,10 @@ function ElementList( self )
 		local element, interaction = Element({}, name), Element({}, name..'_interaction')
 
 		-- create body property
-		local body = Body( {}, element, Vector2D( x, y ), xq, yq, false, true )
-		local ibody = Body( {}, element, Vector2D( x, y ), xq*1.5, yq*2.5, false, false )
-		body:addEvent( Body_Collision({}, body, self ) )
-		ibody:addEvent( Body_Collision({}, ibody, self ) )
+		local body = Body( {}, element, self, Vector2D( x, y ), xq, yq, false, true )
 		element:addProperty( body )
+		
+		local ibody = Body( {}, element, self, Vector2D( x, y ), xq*1.5, yq*2.5, false, false )
 		interaction:addProperty( ibody )
 
 		-- create sprite property

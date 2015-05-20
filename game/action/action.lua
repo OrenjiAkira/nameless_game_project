@@ -1,8 +1,8 @@
--- Event --
+-- action --
 
 -- An event of a property
 
-function Event( self )
+function action( self )
 
 	local name
 
@@ -14,13 +14,6 @@ function Event( self )
 		name = n
 	end
 
-	-- public update methods
-	function self:update()
-		return
-	end
-	function self:render()
-		return
-	end
 	function self:happen()
 		return
 	end

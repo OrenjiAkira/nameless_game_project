@@ -8,17 +8,11 @@ function input_manager(self)
 
 	local function movement()
 		local movementinput = input:getMovement()
-		local playermovement = Movement( {}, movementinput, player )
-		queryEvent(playermovement)
-	end
-	local function movementanimation()
-		local movementinput = input:getMovement()
-		local playermovement_animation = Movement_Animation( {}, movementinput, player )
-		queryEvent(playermovement_animation)
+		local playermovement = movement( {}, movementinput, player )
+		trigger( "playermovement", { movementinput, player } )
 	end
 	function self:update()
 		input:update()
-		movementanimation()
 		movement()
 	end
 

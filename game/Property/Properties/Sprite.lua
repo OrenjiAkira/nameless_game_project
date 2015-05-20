@@ -7,7 +7,7 @@ function Sprite( self, element, file, xquads, yquads )
 
 	self:setName('Sprite')
 	
-	local spritesheet = love.graphics.newImage( '/assets/sprites/' .. file .. '.png' )
+	local spritesheet = love.graphics.newImage( '/_assets/sprites/' .. file .. '.png' )
 	spritesheet:setFilter( 'nearest', 'nearest' )
 	
 	local width = spritesheet:getWidth()

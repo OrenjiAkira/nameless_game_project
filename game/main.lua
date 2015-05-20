@@ -1,7 +1,7 @@
 -- Main --
 
 
-require 'libs/Vector'
+require '_libs/Vector'
 
 require 'input'
 require 'input_manager'
@@ -14,16 +14,16 @@ require 'Property/Properties/Sprite'
 require 'Property/Properties/Body'
 require 'Property/Properties/Translate'
 
-require 'Event/Event'
-require 'Event/Event_Manager'
-require 'Event/Events/Movement'
-require 'Event/Events/Movement_Animation'
-require 'Event/Events/Body_Collision'
+require 'action/action'
+require 'action/action_manager'
+require 'action/actions/movement'
+require 'action/actions/movement_animation'
 
 -- main only variables and tables
 local dtotal = 0
 local fps = 1/30
 local camera = {}
+local tick = 0
 
 -- global tables
 elements = ElementList( {} )
@@ -45,7 +45,7 @@ function love.load()
 	jeff:setAttribute('Sprite', 'Offset', 64, 124)
 
 	camera = hudthings:newElement('camera')
-	eventmgr = event_manager( {} )
+	actionmgr = action_manager( {} )
 	inputmgr = input_manager( {} )
 
 end
@@ -56,9 +56,11 @@ function love.update( dt )
 		dtotal = dtotal - fps
 
 		-- do things here
+		tick = tick + 1
+		print(tick)
 
 		inputmgr:update()
-		eventmgr:update()
+		actionmgr:update()
 
 		hudthings:update()
 		elements:update()
@@ -99,6 +101,6 @@ function love.keyreleased(key)
 	end
 end
 
-function queryEvent( event )
-	eventmgr:addEvent(event)
+function trigger( action_name, parameters )
+	actionmgr:addAction(action_name, parameters)
 end

@@ -2,7 +2,7 @@
 
 
 
-function Body( self, element, _pos, _width, _height, _invertedhitbox, _collidable )
+function Body( self, element, elementlist, _pos, _width, _height, _invertedhitbox, _collidable )
 	Property(self)
 
 	self:setName('Body')
@@ -106,43 +106,76 @@ function Body( self, element, _pos, _width, _height, _invertedhitbox, _collidabl
 		if speed < 0 then speed = 0 end
 	end
 
+	local function checkCollision( next_coordinate, axis )
+		local collision = false
+		local this_element = element
+		local this_element_pos = Vector2D()
+		local this_element_box = { w = width, h = height }
 
-	-- update Collision
-	local function verifyCollision( old_coordinate, new_coordinate, axis )
-
-		local isColliding = self:getEvent('Body_Collision'):update( element, new_coordinate, axis )
-		
-		if isColliding.collision then
-			return old_coordinate
+		if axis == "x" then
+			this_element_pos.x = next_coordinate
+			this_element_pos.y = pos.y
+		elseif axis == "y" then
+			this_element_pos.x = pos.x
+			this_element_pos.y = next_coordinate
 		else
-			return new_coordinate
+			this_element_pos = pos
 		end
-	end
 
+		for _,that_element in ipairs(elementlist) do
+			local that_element_pos = that_element:getAttribute("Body", "Pos")
+			local that_element_box = { w = that_element:getAttribute("Body", "Width"), h = that_element:getAttribute("Body", "Height") }
+			if that_element ~= this_element then
+				if that_element_pos.x - that_element_box.w/2 <= this_element_pos.x + this_element_box.w/2 or
+				that_element_pos.x + that_element_box.w/2 >= this_element_pos.x - this_element_box.w/2 or
+				that_element_pos.y - that_element_box.h/2 <= this_element_pos.y + this_element_box.h/2 or
+				that_element_pos.y + that_element_box.h/2 >= this_element_pos.y - this_element_box.h/2 then
+
+					trigger("collision", {this_element, that_element}) --whether or not they do sth with it, they are colliding
+
+					if that_element:getAttribute("Body", "Collidable") then
+						collision = true
+					end
+				end
+			end
+		end
+
+		if collidable then
+			collision = false
+		end
+		return collision
+	end
 
 	-- update method
 	function self:update()
 
 		if direction and speed > 0 then
 			--print(speed.x, speed.y)
-			-- current position
+
+			-- current position and future position
 			local oldx = pos.x
 			local oldy = pos.y
-			local x, y
+			local newx, newy
 
 			-- displacement
 			local dx = speed*math.cos(direction)
 			local dy = speed*math.sin(direction)
 
-		  if self:getEvent('Body_Collision') then
-		  	x = verifyCollision(oldx, oldx+dx, 'x')
-		  	y = verifyCollision(oldy, oldy+dy, 'y')
-		  else
-		  	x = oldx + dx
-		  	y = oldy + dy
-		  end
+			local xcol = checkCollision(oldx + dx, "x")
+			local ycol = checkCollision(oldy + dy, "y")
 
-	    self:setPos( x, y )
+			if xcol then
+				newx = oldx
+			else
+				newx = oldx + dx
+			end
+			if ycol then
+				newy = oldy
+			else
+				newy = oldy + dy 
+			end
+
+			self:setPos( newx, newy )
 	  end
 	end
 

@@ -1,7 +1,7 @@
 -- Movement Animation --
 
-function Movement_Animation( self, move, element )
-	Event(self)
+function movement_animation( self, move, element )
+	action(self)
 
 	local sprite = element:getProperty('Sprite')
 	self:setName("Movement_Animation")
