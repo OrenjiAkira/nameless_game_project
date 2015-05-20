@@ -156,4 +156,3 @@ function Body( self, element, _pos, _width, _height, _invertedhitbox, _collidabl
 
 	return self
 end
-	

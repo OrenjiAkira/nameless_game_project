@@ -18,8 +18,6 @@ require 'Event/Event'
 require 'Event/Event_Manager'
 require 'Event/Events/Movement'
 require 'Event/Events/Movement_Animation'
---require 'Event/Events/Sprite_MovementInput'
---require 'Event/Events/Body_MovementInput'
 require 'Event/Events/Body_Collision'
 
 -- main only variables and tables
