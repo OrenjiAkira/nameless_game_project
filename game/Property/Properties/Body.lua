@@ -108,40 +108,42 @@ function Body( self, element, elementlist, _pos, _width, _height, _invertedhitbo
 
 	local function checkCollision( next_coordinate, axis )
 		local collision = false
-		local this_element = element
-		local this_element_pos = Vector2D()
-		local this_element_box = { w = width, h = height }
+		local this = element
+		local this_pos = Vector2D()
+		local this_box = { w = width, h = height }
 
 		if axis == "x" then
-			this_element_pos.x = next_coordinate
-			this_element_pos.y = pos.y
+			this_pos.x = next_coordinate
+			this_pos.y = pos.y
 		elseif axis == "y" then
-			this_element_pos.x = pos.x
-			this_element_pos.y = next_coordinate
+			this_pos.x = pos.x
+			this_pos.y = next_coordinate
 		else
-			this_element_pos = pos
+			this_pos = pos
 		end
 
-		for _,that_element in ipairs(elementlist) do
-			local that_element_pos = that_element:getAttribute("Body", "Pos")
-			local that_element_box = { w = that_element:getAttribute("Body", "Width"), h = that_element:getAttribute("Body", "Height") }
-			if that_element ~= this_element then
-				if that_element_pos.x - that_element_box.w/2 <= this_element_pos.x + this_element_box.w/2 or
-				that_element_pos.x + that_element_box.w/2 >= this_element_pos.x - this_element_box.w/2 or
-				that_element_pos.y - that_element_box.h/2 <= this_element_pos.y + this_element_box.h/2 or
-				that_element_pos.y + that_element_box.h/2 >= this_element_pos.y - this_element_box.h/2 then
-
-					trigger("collision", {this_element, that_element}) --whether or not they do sth with it, they are colliding
-
-					if that_element:getAttribute("Body", "Collidable") then
+		for _,that in ipairs(elementlist:getElementList()) do
+			local that_pos = that:getAttribute("Body", "Pos")
+			local that_box = { w = that:getAttribute("Body", "Width"), h = that:getAttribute("Body", "Height") }
+			if that ~= this then
+				print( this:getId(), that:getId() )
+				if not ( this_pos.x - this_box.w/2 > that_pos.x + that_box.w/2 or
+				this_pos.x + this_box.w/2 < that_pos.x - that_box.w/2 or
+				this_pos.y - this_box.h/2 > that_pos.y + that_box.h/2 or
+				this_pos.y + this_box.h/2 < that_pos.y - that_box.h/2 ) then
+				
+					trigger("collision", {this, that}) --whether or not they do sth with it, they are colliding
+					if that:getAttribute("Body", "Collidable") then
 						collision = true
+						print("that element is collidable")
 					end
 				end
 			end
 		end
 
-		if collidable then
+		if not collidable then
 			collision = false
+			print("this element isn't collidable")
 		end
 		return collision
 	end

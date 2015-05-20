@@ -14,10 +14,11 @@ function action_manager( self )
 		end
 
 		if trigger == "collision" then
-			print( unpack(parameters) .. " are colliding." )
+			print( parameters[1]:getId() .. " and " .. parameters[2]:getId()  .. " are colliding.")
 		end
 
 		for _,action in ipairs(triggeredactions) do	
+			print("action queried!")
 			table.insert(actionlist, action)
 		end
 	end
@@ -28,6 +29,7 @@ function action_manager( self )
 
 	function self:update()
 		for i,action in ipairs(actionlist) do
+			print(action:getName())
 			action:happen()
 			self:removeAction(i)
 		end

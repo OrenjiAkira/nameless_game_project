@@ -5,7 +5,7 @@ function movement( self, move, element )
 
 	local body = element:getProperty('Body')
 	local sprite = element:getProperty('Sprite')
-	self:setName("Movement")
+	self:setName("movement")
 
 	-- calculate movement polar coordinate
 	local function getAngle()

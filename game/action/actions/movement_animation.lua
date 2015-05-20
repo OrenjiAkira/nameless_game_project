@@ -4,7 +4,7 @@ function movement_animation( self, move, element )
 	action(self)
 
 	local sprite = element:getProperty('Sprite')
-	self:setName("Movement_Animation")
+	self:setName("movement animation")
 
 	-- set the state of movement animation
 	function self:happen()

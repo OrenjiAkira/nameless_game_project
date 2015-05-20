@@ -57,7 +57,7 @@ function love.update( dt )
 
 		-- do things here
 		tick = tick + 1
-		print(tick)
+		--print(tick)
 
 		inputmgr:update()
 		actionmgr:update()
@@ -102,5 +102,6 @@ function love.keyreleased(key)
 end
 
 function trigger( action_name, parameters )
-	actionmgr:addAction(action_name, parameters)
+	print("trigger: ".. action_name)
+	actionmgr:addAction( action_name, parameters )
 end
