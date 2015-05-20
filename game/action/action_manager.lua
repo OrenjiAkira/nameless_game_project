@@ -9,8 +9,8 @@ function action_manager( self )
 		local triggeredactions = {}
 
 		if trigger == "movement" then
-			table.insert( triggeredactions, movement( {}, unpack(parameters) ) )
 			table.insert( triggeredactions, movement_animation( {}, unpack(parameters) ) )
+			table.insert( triggeredactions, movement( {}, unpack(parameters) ) )
 		end
 
 		if trigger == "collision" then
