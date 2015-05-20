@@ -21,6 +21,9 @@ function Event( self )
 	function self:render()
 		return
 	end
+	function self:happen()
+		return
+	end
 
 	return self
 end

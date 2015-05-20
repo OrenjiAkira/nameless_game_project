@@ -13,13 +13,11 @@ function ElementList( self )
 
 		-- create body property
 		local body = Body( {}, element, Vector2D( x, y ), xq, yq, false, true )
-		body:addEvent( Body_MovementInput({}, body) )
 		body:addEvent( Body_Collision({}, body, self ) )
 		element:addProperty( body )
 
 		-- create sprite property
 		local sprite = Sprite( {}, element, 'avatar', 4, 4 )
-		sprite:addEvent( Sprite_MovementInput({}, sprite) )
 		element:addProperty( sprite )
 
 		return element
@@ -30,7 +28,6 @@ function ElementList( self )
 		local element = Element({}, 'camera')
 
 		local body = Body({}, element, nil, 80, 45, true, true )
-		body:addEvent( Body_MovementInput({}, body ) )
 		body:addEvent( Body_Collision({}, body, self ) )
 		element:addProperty( body )
 
