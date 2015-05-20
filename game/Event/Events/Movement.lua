@@ -33,7 +33,6 @@ function Movement( self, move, element )
 		end
 	end
 	
-	-- update method
 	function self:happen()
 		local angle = getAngle()
 		if angle then

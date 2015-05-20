@@ -8,19 +8,14 @@ function event_manager( self )
 		table.insert(eventlist, event)
 	end
 
-	function self:removeEvent(eventname)
-		for index,event in ipairs(eventlist) do
-			if event:getName() == eventname then
-				table.remove(eventlist, index)
-				break
-			end
-		end
+	function self:removeEvent(index)
+		table.remove(eventlist, index)
 	end
 
 	function self:update()
-		for _,event in ipairs(eventlist) do
+		for i,event in ipairs(eventlist) do
 			event:happen()
-			self:removeEvent( event:getName() )
+			self:removeEvent(i)
 		end
 	end
 

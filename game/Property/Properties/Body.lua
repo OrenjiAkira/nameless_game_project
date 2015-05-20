@@ -113,23 +113,15 @@ function Body( self, element, _pos, _width, _height, _invertedhitbox, _collidabl
 		local isColliding = self:getEvent('Body_Collision'):update( element, new_coordinate, axis )
 		
 		if isColliding.collision then
-	  	return old_coordinate
-	  else
+			return old_coordinate
+		else
 			return new_coordinate
-	  end
+		end
 	end
 
 
 	-- update method
 	function self:update()
-
-		-- update input
-		--[[
-		movementinput = self:getEvent('Body_MovementInput')
-		if movementinput then
-			movementinput:update()
-		end
-		]]
 
 		if direction and speed > 0 then
 			--print(speed.x, speed.y)
