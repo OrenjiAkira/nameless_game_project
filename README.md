@@ -12,8 +12,8 @@ You can also execute love.exe in terminal and direct it to game folder:
   On mac I have no fucking idea, but I assume UNIX computers work similarly, so it might work just like linux or not at all.
   
 Also, images here are all MINE and done by ME.
-Do not post it anywhere, do not claim it as your own.
-Do not use it for your own projects, be it with some modifications or none.
+Do not post them anywhere, do not claim them as your own.
+Do not use them for your own projects, be them with some modifications or none.
 If you want to use them for some reason, please contact me at orenjiakira@gmail.com.
 I might sound defensive, but if it's for a good reason I will most certainly allow you to use them... So long as you ask first and give proper credit!
 

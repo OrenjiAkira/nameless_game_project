@@ -5,6 +5,7 @@ function Movement( self, move, element )
 
 	local body = element:getProperty('Body')
 	local sprite = element:getProperty('Sprite')
+	self:setName("Movement")
 
 	-- calculate movement polar coordinate
 	local function getAngle()
@@ -31,19 +32,6 @@ function Movement( self, move, element )
 			return
 		end
 	end
-	local function setSpriteState()
-		if move then
-			if move.l then
-				sprite:setState('walk','left')
-			elseif move.r then
-				sprite:setState('walk','right')
-			else
-				sprite:setState('walk')
-			end
-		else
-			sprite:setState('still')
-		end
-	end
 	
 	-- update method
 	function self:happen()
@@ -53,7 +41,6 @@ function Movement( self, move, element )
 		else
 			body:stop()
 		end
-		setSpriteState()
 	end
 
 	return self

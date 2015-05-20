@@ -14,12 +14,12 @@ function input_manager(self)
 	local function movementanimation()
 		local movementinput = input:getMovement()
 		local playermovement_animation = Movement_Animation( {}, movementinput, player )
-		--queryEvent(playermovement_animation)
+		queryEvent(playermovement_animation)
 	end
 	function self:update()
 		input:update()
-		movement()
 		movementanimation()
+		movement()
 	end
 
 	return self
