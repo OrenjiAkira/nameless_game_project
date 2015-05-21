@@ -91,22 +91,24 @@ function Body( self, element, elementlist, _pos, _width, _height, _invertedhitbo
 	end
 
 	function self:getCollision(elementname)
-		for i,_element in ipairs(collisionlist) do
-			if _element:getId() == elementname then
-				return _element
+		for i,element in ipairs(collisionlist) do
+			if element:getId() == elementname then
+				return element
 			end
 		end
 	end
-	function self:addCollision(_element)
-		if not self:getCollision(_element:getId()) then
-			table.insert(collisionlist, _element)
+	function self:addCollision(element)
+		if not self:getCollision(element:getId()) then
+			print( element:getId() .. " element was added to collision list")
+			table.insert(collisionlist, element)
 		else
-			print("element already in collision")
+			print(element:getId() .. " element already in collision")
 		end
 	end
 	function self:removeCollision(elementname)
-		for i,_element in ipairs(collisionlist) do
-			if _element:getId() == elementname then
+		for i,element in ipairs(collisionlist) do
+			if element:getId() == elementname then
+				print( element:getId() .. " element was removed from collision list")
 				table.remove(collisionlist, i)
 			end
 		end

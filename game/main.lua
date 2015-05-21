@@ -3,21 +3,21 @@
 
 require '_libs/Vector'
 
-require 'input'
-require 'input_manager'
+require 'Input'
+require 'Input_Manager'
 
 require 'Element/Element'
-require 'Element/ElementList'
+require 'Element/Element_Manager'
 
 require 'Property/Property'
 require 'Property/Properties/Sprite'
 require 'Property/Properties/Body'
 require 'Property/Properties/Translate'
 
-require 'action/action'
-require 'action/action_manager'
-require 'action/actions/movement'
-require 'action/actions/movement_animation'
+require 'Action/Action'
+require 'Action/Action_Manager'
+require 'Action/Actions/Movement'
+require 'Action/Actions/Movement_Animation'
 
 -- main only variables and tables
 local dtotal = 0
@@ -26,8 +26,8 @@ local camera = {}
 local tick = 0
 
 -- global tables
-elements = ElementList( {} )
-hudthings = ElementList( {} )
+elements = Element_Manager( {} )
+hudthings = Element_Manager( {} )
 
 -- global values
 unit = 16
@@ -45,8 +45,8 @@ function love.load()
 	jeff:setAttribute('Sprite', 'Offset', 64, 124)
 
 	camera = hudthings:newElement('camera')
-	actionmgr = action_manager( {} )
-	inputmgr = input_manager( {} )
+	actionmgr = Action_Manager( {} )
+	inputmgr = Input_Manager( {} )
 
 end
 
@@ -57,7 +57,7 @@ function love.update( dt )
 
 		-- do things here
 		tick = tick + 1
-		--print(tick)
+		print("##################")
 
 		inputmgr:update()
 		actionmgr:update()
