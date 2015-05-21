@@ -3,15 +3,18 @@
 function Input_Manager(self)
 
 	local Input = Input( {} )
-	local player = elements:getElement('player')
-	local state = "play"
 
+	local function interactioninput()
+		local input = Input:getInteraction()
+		trigger( "interaction", input )
+	end
 	local function movementinput()
-		local movementinput = Input:getMovement()
-		trigger( "movement", { movementinput, player } )
+		local input = Input:getMovement()
+		trigger( "movement", input )
 	end
 	function self:update()
 		Input:update()
+		interactioninput()
 		movementinput()
 	end
 
