@@ -16,6 +16,7 @@ function Body( self, element, elementlist, _pos, _width, _height, _invertedhitbo
 	local direction
 	local invertedhitbox = _invertedhitbox
 	local collidable = _collidable
+	local collisionlist = {}
 	print(width, height, pos.x, pos.y)
 
 	-- gets width
@@ -89,6 +90,28 @@ function Body( self, element, elementlist, _pos, _width, _height, _invertedhitbo
 		collidable = collide
 	end
 
+	function self:getCollision(elementname)
+		for i,_element in ipairs(collisionlist) do
+			if _element:getId() == elementname then
+				return _element
+			end
+		end
+	end
+	function self:addCollision(_element)
+		if not self:getCollision(_element:getId()) then
+			table.insert(collisionlist, _element)
+		else
+			print("element already in collision")
+		end
+	end
+	function self:removeCollision(elementname)
+		for i,_element in ipairs(collisionlist) do
+			if _element:getId() == elementname then
+				table.remove(collisionlist, i)
+			end
+		end
+	end
+
 	-- sets direction, local only
 	local function setDirection(newdir)
 		direction = newdir
@@ -132,11 +155,14 @@ function Body( self, element, elementlist, _pos, _width, _height, _invertedhitbo
 				this_pos.y - this_box.h/2 > that_pos.y + that_box.h/2 or
 				this_pos.y + this_box.h/2 < that_pos.y - that_box.h/2 ) then
 				
-					trigger("collision", {this, that}) --whether or not they do sth with it, they are colliding
+					--trigger("collision", {this, that}) --whether or not they do sth with it, they are colliding
+					self:addCollision(that)
 					if that:getAttribute("Body", "Collidable") then
 						collision = true
 						print("that element is collidable")
 					end
+				else
+					self:removeCollision(that:getId())
 				end
 			end
 		end
