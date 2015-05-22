@@ -3,8 +3,10 @@
 
 require '_libs/Vector'
 
-require 'Input'
-require 'Input_Manager'
+require 'theInput'
+require 'theInputManager'
+
+require 'theDomain'
 
 
 -- main only variables and tables
@@ -20,7 +22,7 @@ function love.load()
 	-- load things
 	window = love.graphics.newCanvas(1280,720)
 	love.graphics.setBackgroundColor(0, 0, 0)
-	inputmgr = Input_Manager( {} )
+	inputmgr = theInputManager( {} )
 
 end
 

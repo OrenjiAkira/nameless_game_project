@@ -1,6 +1,6 @@
--- Input --
+-- the Input --
 
-function Input(self)
+function theInput(self)
 
 	local frametimer = 0
 	local timer = 0
@@ -56,7 +56,7 @@ function Input(self)
 
 	function self:getInteraction()
 		local maru = love.keyboard.isDown(' ', 'return', 'z')
-		local batsu = love.keyboard.isDown('escape', 'x')
+		local batsu = love.keyboard.isDown('escape', 'x', 'backspace')
 
 		interaction_input.maru = maru
 		interaction_input.batsu = batsu
