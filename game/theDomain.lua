@@ -1,8 +1,14 @@
+
+
+-- the Domain --
+
+
 function theDomain(self)
 
 	local list = {}
 	local messages = {}
 
+	-- list managing --
 	function self:get(id)
 		print("Looking for element of id#" .. id)
 		for i,element in ipairs(list) do
@@ -29,6 +35,7 @@ function theDomain(self)
 		return false
 	end
 
+	-- messages managing --
 	function self:receiveMessage(message)
 		print("Domain got a message: " .. message)
 		table.insert(messages, message)
