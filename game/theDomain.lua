@@ -36,9 +36,18 @@ function theDomain(self)
 	end
 
 	-- messages managing --
-	function self:receiveMessage(message)
+	function self:addMessage(message)
 		print("Domain got a message: " .. message)
 		table.insert(messages, message)
+	end
+	function self:readMessage(message)
+		for i,m in ipairs(messages) do
+			if m == message then
+				-- things happen here, but this is just a placeholder method
+				print("Message: '" .. message .. "' read")
+				table.remove(messages, i)
+			end
+		end
 	end
 
 	return self
