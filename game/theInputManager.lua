@@ -6,11 +6,11 @@ function theInputManager(self)
 
 	local function interactioninput()
 		local getinput = input:getInteraction()
-		trigger( "interaction", getinput )
+		if getinput then trigger( "interaction", getinput ) end
 	end
 	local function movementinput()
 		local getinput = input:getMovement()
-		trigger( "movement", getinput )
+		if getinput then trigger( "movement", getinput ) end
 	end
 	function self:update()
 		input:update()
