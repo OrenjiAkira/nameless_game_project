@@ -4,13 +4,18 @@
 
 
 function theElement(self)
+
 	local id
 	local attributes = {}
 
+	-- ID managing --
 	function self:getId()
 		return id
 	end
+
+	-- attributes managing --
 	function self:attr( key, value )
+		-- Yes, this is just like jquery's .attr() function, except i don't know the exact code from jquery so I just guessed.
 		if value then
 			print("Setting attribute " .. key .. " to " .. value)
 			if attributes[key] then 
