@@ -6,7 +6,15 @@
 function theDomain(self)
 
 	local list = {}
-	local messages = {}
+	local name = "domain_"
+
+	function self:setname(n)
+		name = "domain_" .. n
+	end
+	function self:getname()
+		local n = strsub(name,8)
+		return n
+	end
 
 	-- list managing --
 	function self:get(id)
@@ -33,21 +41,6 @@ function theDomain(self)
 			end
 		end
 		return false
-	end
-
-	-- messages managing --
-	function self:addMessage(message)
-		print("Domain got a message: " .. message)
-		table.insert(messages, message)
-	end
-	function self:readMessage(message)
-		for i,m in ipairs(messages) do
-			if m == message then
-				-- things happen here, but this is just a placeholder method
-				print("Message: '" .. message .. "' read")
-				table.remove(messages, i)
-			end
-		end
 	end
 
 	return self

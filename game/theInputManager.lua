@@ -1,22 +1,16 @@
--- the Input Manager --
 
-function theInputManager(self)
 
-	local input = theInput( {} )
+-- the Input --
 
-	local function interactioninput()
-		local getinput = input:getInteraction()
-		if getinput then trigger( "interaction", getinput ) end
-	end
-	local function movementinput()
-		local getinput = input:getMovement()
-		if getinput then trigger( "movement", getinput ) end
-	end
+
+function theInput(self)
+	theDomain(self)
+
+	local input = theInputReader()
+	self:add(input)
+
 	function self:update()
 		input:update()
-		interactioninput()
-		movementinput()
 	end
 
-	return self
 end

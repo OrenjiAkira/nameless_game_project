@@ -3,26 +3,26 @@
 -- the Input --
 
 
-function theInput(self)
+function theInput()
 
+	local self = {}
 	local frametimer = 0
 	local timer = 0
-	local interaction = false
-	local directional_input = {u,r,d,l}
-	local interaction_input = {maru, batsu}
+	theDomain(self)
+	self:setname("input")
 
 	-- Input for directionals
-	function self:getMovement()
-
+	local function getMovement()
 		local left = love.keyboard.isDown('left')
 		local right = love.keyboard.isDown('right')
 		local up = love.keyboard.isDown('up')
 		local down = love.keyboard.isDown('down')
-
-		directional_input.u = up
-		directional_input.d = down
-		directional_input.l = left
-		directional_input.r = right
+		local directional_input = {
+			u = up,
+			r = right,
+			d = down,
+			l = left
+		}
 
 		if left and right then
 			
@@ -57,38 +57,41 @@ function theInput(self)
 		end
 	end
 
-	function self:getInteraction()
-		local maru = love.keyboard.isDown(' ', 'return', 'z')
-		local batsu = love.keyboard.isDown('escape', 'x', 'backspace')
+	local function getInteraction()
+		local yes = love.keyboard.isDown(' ', 'return', 'z')
+		local no = love.keyboard.isDown('escape', 'x', 'backspace')
+		local interaction_input = {
+			maru = yes,
+			batsu = no
+		}
 
-		interaction_input.maru = maru
-		interaction_input.batsu = batsu
-
-		if maru or batsu then
+		if yes or no then
 			return interaction_input
 		else
 			return false
 		end
 	end
 
-	function self:isIdle()
-		if not self:getMovement() and not self:getInteraction() then
+	function self:update()
+		local moving = getMovement()
+		local interacting = getInteraction()
+		if not moving and not interacting then
 			frametimer = frametimer + 1
 			if frametimer == 30 then
 				frametimer = 0
 				timer = timer + 1
-				print('Idle for '..timer..' seconds.')
+				trigger("idle", timer)
 			end
-			return true
 		else
 			frametimer = 0
 			timer = 0
-			return false
+			if moving then
+				trigger("movement", moving)
+			end
+			if interacting then
+				trigger("interaction", interacting)
+			end
 		end
-	end
-
-	function self:update()
-		self:isIdle()
 	end
 
 	return self
