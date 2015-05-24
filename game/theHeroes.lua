@@ -12,7 +12,7 @@ function theHeroes()
 
 	-- Registering Heroes from Database --
 	for _,hero in pairs(database.heroes) do
-		local elementhero = theHero()
+		local elementhero = theElement({})
 
 		elementhero:id(hero.id)
 		elementhero:name(hero.name)

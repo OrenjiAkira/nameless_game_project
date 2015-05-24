@@ -9,7 +9,7 @@ return {
 		name = "Sofi",
 		width = 2.5,
 		height = 1.5,
-		sprite = "avatar"
+		sprite = "sofi"
 	},
 	Jeff = {
 		id = 2,
@@ -19,14 +19,14 @@ return {
 		sprite = "jeff"
 	},
 	Malu = {
-	id = 3,
+		id = 3,
 		name = "Malu",
 		width = 2.5,
 		height = 1.5,
 		sprite = "malu"
 	},
 	Angel = {
-	id = 4,
+		id = 4,
 		name = "Angel",
 		width = 2.5,
 		height = 1.5,

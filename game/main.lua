@@ -6,13 +6,12 @@
 require '_libs/Vector'
 
 require 'theElement'
-require 'theHero'
 
 require 'theDomain'
 require 'theInput'
 require 'theHeroes'
+require 'theSprites'
 
-database = require '_database/db'
 
 unit = 16
 zoom = 2
@@ -26,9 +25,15 @@ function love.load()
 	-- load things
 	window = love.graphics.newCanvas(1280,720)
 	love.graphics.setBackgroundColor(0, 0, 0)
+
+	-- reading database
+	database = require 'db'
+
+	-- setting up the engine
 	domains = {}
 	domains.inputdomain = theInput()
 	domains.heroesdomain = theHeroes()
+	domains.spritesdomain = theSprites()
 
 end
 

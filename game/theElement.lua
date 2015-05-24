@@ -6,6 +6,7 @@
 function theElement(self)
 
 	local id
+	local name
 	local attributes = {}
 
 	-- ID managing --
@@ -16,21 +17,25 @@ function theElement(self)
 		return id
 	end
 
+	function self:name(value)
+		if value then
+			name = value
+		end
+		return name
+	end
+
 	-- attributes managing --
 	function self:attr( key, value )
 		-- Yes, this is just like jquery's .attr() function, except i don't know the exact code from jquery so I just guessed.
 		if value then
-			print("Setting attribute " .. key .. " to " .. value)
-			if attributes[key] then 
+			print("New attribute " .. key)
+			if not attributes[key] then 
 				attributes[key] = value
-				return attributes[key]
-			else
-				return false
 			end
 		else
 			print("Getting attribute " .. key)
-			return attributes[key] or false
 		end
+		return attributes[key]
 	end
 	function self:removeattr( key )
 		print("Removing attribute " .. key)
