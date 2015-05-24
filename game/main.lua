@@ -5,20 +5,22 @@
 
 require '_libs/Vector'
 
-require 'theInput'
+require 'theElement'
+require 'theHero'
 
 require 'theDomain'
-require 'theElement'
+require 'theInput'
+require 'theHeroes'
 
+database = require '_database/db'
+
+unit = 16
+zoom = 2
 
 -- main only variables and tables
 local dtotal = 0
 local tick = 0
-
--- global values
-fps = 1/30
-unit = 16
-zoom = 2
+local fps = 1/30
 
 function love.load()
 	-- load things
@@ -26,6 +28,7 @@ function love.load()
 	love.graphics.setBackgroundColor(0, 0, 0)
 	domains = {}
 	domains.inputdomain = theInput()
+	domains.heroesdomain = theHeroes()
 
 end
 
@@ -52,13 +55,19 @@ function trigger( action_name, parameters )
 		parameters:update()
 	end
 	if action_name == "interaction" and parameters then
-		print(unpack(parameters))
+		if parameters.maru then
+			print("Hey!")
+		end
 		if parameters.batsu then
+			print("Boo!")
 			love.event.quit()
 		end
 	end
 	if action_name == "movement" and parameters then
-		print(unpack(parameters))
+		print("up:", parameters.u)
+		print("right:",parameters.r)
+		print("down:", parameters.d)
+		print("left:",parameters.l)
 	end
 	if action_name == "idle" and parameters then
 		print('Idle for '..parameters..' seconds.')

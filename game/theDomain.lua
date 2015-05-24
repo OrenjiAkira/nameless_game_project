@@ -20,7 +20,7 @@ function theDomain(self)
 	function self:get(id)
 		print("Looking for element of id#" .. id)
 		for i,element in ipairs(list) do
-			if element:getId() == id then
+			if element:id() == id then
 				print("Element added.")
 				return element
 			end
@@ -28,13 +28,13 @@ function theDomain(self)
 		return false
 	end
 	function self:add(element)
-		print("Adding element of id#" .. element:getId())
+		print("Adding element of id#" .. element:id())
 		table.insert(list, element)
 	end
 	function self:rem(id)
 		print("Looking for element of id#" .. id)
 		for i,element in ipairs(list) do
-			if element:getId() == id then
+			if element:id() == id then
 				table.remove(list, i)
 				print("Element found and removed.")
 				return true
@@ -44,8 +44,4 @@ function theDomain(self)
 	end
 
 	return self
-end
-
-function theHeroes(self)
-	theDomain(self)
 end

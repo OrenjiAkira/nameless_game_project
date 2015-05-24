@@ -9,7 +9,10 @@ function theElement(self)
 	local attributes = {}
 
 	-- ID managing --
-	function self:getId()
+	function self:id(value)
+		if value then
+			id = value
+		end
 		return id
 	end
 
