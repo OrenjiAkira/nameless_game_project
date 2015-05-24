@@ -12,7 +12,7 @@ function theDomain(self)
 		name = "domain_" .. n
 	end
 	function self:getname()
-		local n = strsub(name,8)
+		local n = name
 		return n
 	end
 

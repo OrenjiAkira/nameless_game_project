@@ -10,6 +10,7 @@ function theInput()
 	local timer = 0
 	theDomain(self)
 	self:setname("input")
+	print("Created domain: "..self:getname())
 
 	-- Input for directionals
 	local function getMovement()
