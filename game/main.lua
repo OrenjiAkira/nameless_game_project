@@ -5,13 +5,12 @@
 
 require '_libs/Vector'
 
-require 'theElement'
+require 'Classes/theElement'
+require 'Classes/theDomain'
 
-require 'theDomain'
-require 'theInput'
-require 'theHeroes'
-require 'theSprites'
-
+require 'Classes/Domains/theInput'
+require 'Classes/Domains/theHeroes'
+require 'Classes/Domains/theSprites'
 
 unit = 16
 zoom = 2
@@ -26,10 +25,10 @@ function love.load()
 	window = love.graphics.newCanvas(1280,720)
 	love.graphics.setBackgroundColor(0, 0, 0)
 
-	-- reading database
+	-- read database
 	database = require 'db'
 
-	-- setting up the engine
+	-- set up the engine
 	domains = {}
 	domains.inputdomain = theInput()
 	domains.heroesdomain = theHeroes()

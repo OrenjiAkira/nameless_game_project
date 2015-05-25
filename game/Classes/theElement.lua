@@ -29,9 +29,7 @@ function theElement(self)
 		-- Yes, this is just like jquery's .attr() function, except i don't know the exact code from jquery so I just guessed.
 		if value then
 			print("New attribute " .. key)
-			if not attributes[key] then 
-				attributes[key] = value
-			end
+			attributes[key] = value
 		else
 			print("Getting attribute " .. key)
 		end
