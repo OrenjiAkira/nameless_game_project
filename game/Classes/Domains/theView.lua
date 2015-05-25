@@ -7,7 +7,6 @@ function theView()
 
 	local self
 	local currentmap
-	local camera
 	theDomain(self)
 	self:setname("view")
 	print("Created domain: "..self:getname())

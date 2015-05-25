@@ -8,13 +8,6 @@ require '_libs/Vector'
 require 'Classes/theElement'
 require 'Classes/theDomain'
 
-require 'Classes/Domains/theInput'
-require 'Classes/Domains/theHeroes'
-require 'Classes/Domains/theSprites'
-
-unit = 16
-zoom = 2
-
 -- main only variables and tables
 local dtotal = 0
 local tick = 0
@@ -24,16 +17,16 @@ function love.load()
 	-- load things
 	window = love.graphics.newCanvas(1280,720)
 	love.graphics.setBackgroundColor(0, 0, 0)
-
-	-- read database
+	
 	database = require 'db'
-
-	-- set up the engine
+	
 	domains = {}
-	domains.inputdomain = theInput()
-	domains.heroesdomain = theHeroes()
-	domains.spritesdomain = theSprites()
+	domains.inputdomain = require 'Classes/Domains/theInput'
+	domains.heroesdomain = require 'Classes/Domains/theHeroes'
+	domains.spritesdomain = require 'Classes/Domains/theSprites'
 
+	unit = 16
+	zoom = 2
 end
 
 function love.update( dt )

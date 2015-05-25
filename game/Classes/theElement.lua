@@ -3,8 +3,8 @@
 -- the Element --
 
 
-function theElement(self)
-
+function theElement()
+	local self = {}
 	local id
 	local name
 	local attributes = {}
