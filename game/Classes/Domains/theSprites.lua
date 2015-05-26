@@ -42,13 +42,11 @@ function self:rendersprite(id, matrix, pos)
 	love.graphics.draw(
 		sprite:attr("image"),
 		sprite:attr("quads")[matrix.i][matrix.j],
-		unit*pos.x,
-		unit*pos.y,
-		0,
-		1, 1,
-		sprite:attr("offsetx"),
-		sprite:attr("offsety"),
-		0, 0
+		unit*pos.x, unit*pos.y,
+		0, --rotation: nope, don't do it
+		1, 1, --scaling: unnecessary since I use the built in love.graphics.scale()
+		sprite:attr("offsetx"), sprite:attr("offsety"), --offset: where the reference point is relative to the top-left corner of the quad
+		0, 0 --shear: don't touch it ever
 	)
 end
 

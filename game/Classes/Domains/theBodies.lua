@@ -17,29 +17,51 @@ print("Created domain: "..self:getname())
 
 ]]
 
--- hard coded bodies --
-
+-- list of bodies the game should render
 local currentbodies = {}
-local avatar = theElement()
-table.insert(currentbodies, avatar)
-avatar:id(1)
-avatar:name("avatar")
-avatar:attr("type", "hero")
-avatar:attr("typeid", 1)
-avatar:attr("pos", Vector2D(22,16))
-avatar:attr("sprite", 1)
-avatar:attr("state", "still")
-self:add(avatar)
+
+function self:registerbody(info)
+	local element = theElement()
+	element:id(info.id)
+	element:name(info.name)
+	element:attr("type", info.type)
+	element:attr("typeid", info.typeid)
+	element:attr("pos", info.pos)
+	element:attr("spriteid", info.spriteid)
+	element:attr("frame", info.frame)
+	self:add(element)
+end
+function self:unregisterbody(id)
+	self:rem(id)
+end
+function self:addbody(id)
+	table.insert(currentbodies, self:get(id))
+end
 
 function self:render()
 	for _,body in ipairs(currentbodies) do
 		trigger("rendersprite", {
-			body:attr("sprite"),
+			body:attr("spriteid"),
 			{i=1,j=1},
 			body:attr("pos")
 		})
 	end
 end
 
+-- hard coded bodies --
+local avatar = {
+	id = 1,
+	name = "avatar",
+	type = "hero",
+	typeid = 1,
+	pos = Vector2D(22,16),
+	spriteid = 1,
+	frame = {
+		state = "still",
+		direction = "left"
+	}
+}
+self:registerbody(avatar)
+self:addbody(1)
 
 return self
