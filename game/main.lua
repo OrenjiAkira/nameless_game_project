@@ -21,9 +21,10 @@ function love.load()
 	database = require 'db'
 	
 	domains = {}
-	domains.inputdomain = require 'Classes/Domains/theInput'
-	domains.heroesdomain = require 'Classes/Domains/theHeroes'
-	domains.spritesdomain = require 'Classes/Domains/theSprites'
+	domains.input = require 'Classes/Domains/theInput'
+	domains.heroes = require 'Classes/Domains/theHeroes'
+	domains.sprites = require 'Classes/Domains/theSprites'
+	domains.bodies = require 'Classes/Domains/theBodies'
 
 	unit = 16
 	zoom = 2
@@ -38,18 +39,22 @@ function love.update( dt )
 		tick = tick + 1
 		print("################## " .. tick .. " ##################")
 
-		trigger("update", domains.inputdomain)
+		trigger("update", domains.input)
 	end
 end
 
 function love.draw()
 	love.graphics.scale(zoom)
+	trigger("render", domains.bodies)
 end
 
 function trigger( action_name, parameters )
 	print("trigger: ".. action_name, parameters)
 	if action_name == "update" and parameters then
 		parameters:update()
+	end
+	if action_name == "render" and parameters then
+		parameters:render()
 	end
 	if action_name == "interaction" and parameters then
 		if parameters.maru then
@@ -68,5 +73,8 @@ function trigger( action_name, parameters )
 	end
 	if action_name == "idle" and parameters then
 		print('Idle for '..parameters..' seconds.')
+	end
+	if action_name == "rendersprite" and parameters then
+		domains.sprites:rendersprite(unpack(parameters))
 	end
 end

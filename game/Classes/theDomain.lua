@@ -21,7 +21,7 @@ function theDomain(self)
 		print("Looking for element of id#" .. id)
 		for i,element in ipairs(list) do
 			if element:id() == id then
-				print("Element added.")
+				print("Got element #" .. id .. " " .. element:name() .. " from " .. name)
 				return element
 			end
 		end
@@ -32,7 +32,7 @@ function theDomain(self)
 		table.insert(list, element)
 	end
 	function self:rem(id)
-		print("Looking for element of id#" .. id)
+		print("Looking for element #" .. id .. " " .. element:name() .. " from " .. name)
 		for i,element in ipairs(list) do
 			if element:id() == id then
 				table.remove(list, i)

@@ -16,7 +16,6 @@ for _,hero in pairs(database.heroes) do
 	elementhero:name(hero.name)
 	elementhero:attr("width", hero.width)
 	elementhero:attr("height", hero.height)
-	elementhero:attr("sprite", hero.sprite)
 
 	self:add(elementhero)
 end

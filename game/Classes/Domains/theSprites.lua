@@ -36,8 +36,20 @@ end
 function self:update()
 	
 end
-function self:render()
-	
+function self:rendersprite(id, matrix, pos)
+	local sprite = self:get(id)
+	print("drawing sprite #" .. id .. " at position ( " .. pos.x ..", " .. pos.y .. " )")
+	love.graphics.draw(
+		sprite:attr("image"),
+		sprite:attr("quads")[matrix.i][matrix.j],
+		unit*pos.x,
+		unit*pos.y,
+		0,
+		1, 1,
+		sprite:attr("offsetx"),
+		sprite:attr("offsety"),
+		0, 0
+	)
 end
 
 return self
