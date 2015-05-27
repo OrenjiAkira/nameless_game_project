@@ -8,7 +8,7 @@ theDomain(self)
 self:setname("sprites")
 print("Created domain: "..self:getname())
 
--- Registring Sprites from assets --
+-- Registering Sprites from Database --
 for _,sprite in pairs(database.sprites) do
 	local elementsprite = theElement()
 
