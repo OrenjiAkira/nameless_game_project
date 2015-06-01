@@ -51,10 +51,10 @@ end
 function trigger( action_name, parameters )
 	print("trigger: ".. action_name, parameters)
 	if action_name == "update" and parameters then
-		parameters:update()
+		if parameters.update then parameters:update() end
 	end
 	if action_name == "render" and parameters then
-		parameters:render()
+		if parameters.render then parameters:render() end
 	end
 	if action_name == "interaction" and parameters then
 		if parameters.maru then
@@ -67,9 +67,9 @@ function trigger( action_name, parameters )
 	end
 	if action_name == "movement" and parameters then
 		print("up:", parameters.u)
-		print("right:",parameters.r)
+		print("right:", parameters.r)
 		print("down:", parameters.d)
-		print("left:",parameters.l)
+		print("left:", parameters.l)
 	end
 	if action_name == "idle" and parameters then
 		print('Idle for '..parameters..' seconds.')
